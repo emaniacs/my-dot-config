@@ -1,0 +1,327 @@
+" merge from https://github.com/amix/vimrc
+
+" Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'bling/vim-airline'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'jnwhiteh/vim-golang.git'
+Plugin 'junegunn/goyo.vim.git'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'yegappan/mru'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary.git'
+Plugin 'unknown/open_file_under_cursor.vim'
+Plugin 'vim-scripts/YankRing.vim.git'
+Plugin 'vim-scripts/snipMate.git'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc'
+
+call vundle#end()
+filetype plugin indent on
+
+" Enable line numbers
+set number
+ 
+" Tab indentions
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set matchpairs+=<:>
+
+" Auto change dir
+set autochdir
+
+set history=700
+ 
+" Use hard tabs for make files
+autocmd FileType make setlocal noexpandtab
+ 
+" Syntax highlighting
+syntax on
+ 
+" Auto indention
+set autoindent
+set cindent
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" centering scroll
+set scrolloff=0
+ 
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
+set wildignore+=.git\*,.hg\*,.svn\*
+set wildmode=longest:full,full
+
+" Format multi-line comments
+set comments=sr:/*,mb:*,ex:*/
+set formatoptions+=r
+set foldmethod=marker
+set foldmarker={,}
+
+set guifont=Ubuntu\ Mono\ 11
+set encoding=utf8
+set ffs=unix,dos,mac
+
+set nobackup
+set nowb
+set noswapfile
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+
+if has("gui_running")
+    " colorscheme desert
+    colorscheme gotham
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    " set guitablabel=%M\ %t
+    let g:airline_theme = 'luna'
+    set cursorline
+else
+    colorscheme slate
+    let g:airline_theme = 'zenburn'
+    set nocursorline
+endif
+
+let g:airline#extensions#tabline#enabled=1
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+
+
+let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
+
+command W w !sudo tee % > /dev/null
+
+au BufRead,BufNewFile *.php set ft=php.html
+au BufRead,BufNewFile *.tpl set ft=php.html
+let g:syntastic_html_checkers=['']
+
+au BufRead,BufNewFile *.md setlocal textwidth=80
+" map <F1>  
+"
+map <A-Left> :tabprevious<CR>
+imap <A-Left> <ESC>:tabprevious<CR>
+map <A-Right> :tabnext<CR>
+imap <A-Right> <ESC>:tabnext<CR>
+
+nmap <F8> :tabnew 
+imap <F8> <ESC>:tabnew 
+
+map <F9> :w<CR>
+imap <F9> <ESC>:w<CR>i
+
+map <F10> :NERDTreeToggle<CR>
+imap <F10> <ESC>:NERDTreeToggle<CR>
+map <C-F10> :NERDTree<CR>
+map <S-F10> :TagbarToggle<CR>
+imap <S-F10> <ESC>:TagbarToggle<CR>
+
+nmap <F12> :!bash<CR>
+imap <F12> <ESC>:!bash<CR>
+
+
+let mapleader = ","
+let g:mapleader = ","
+
+nmap <leader>w :w!<cr>
+
+map <leader>tn :tabnew 
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+
+map <leader>eh :sp 
+map <leader>ev :vsplit  
+
+map <leader>c :Bclose<cr>
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+
+map <leader>l :ls<cr>
+map <leader>k :b#<cr>
+
+map <leader>1b :1b<cr>
+map <leader>2b :2b<cr>
+map <leader>3b :3b<cr>
+map <leader>4b :4b<cr>
+map <leader>5b :5b<cr>
+map <leader>6b :6b<cr>
+map <leader>7b :7b<cr>
+map <leader>8b :8b<cr>
+map <leader>9b :9b<cr>
+map <leader>0b :10b<cr>
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+
+" Quickly open a buffer for scribble
+map <leader>q :e ~/buffer<cr>
+
+
+map <T-Left> <C-w><Left>
+map <T-Right> <C-w><Right>
+map <T-Up> <C-w><Up>
+map <T-Down> <C-w><Down>
+map <T-q> <C-w>q
+" map <T-=> <C-w>=
+" map <T-_> <C-w>_
+" map <T-<> <C-w><
+" map <T->> <C-w>>
+" map <T-+> <C-w>+
+ " map <T--> <C-w>-
+" map <T-|> <C-w>|
+"
+map <A-x> "+x
+imap <A-x> <ESC>"+xi
+map <A-v> "+gP
+imap <A-v> <ESC>"+gPi
+map <A-c> "+y
+imap <A-c> <ESC>"+yi
+
+inoremap <C-space> <esc>
+nnoremap ; :
+nnoremap R "_d
+
+
+
+
+au FileType python map <buffer> F :set foldmethod=indent<cr>
+au FileType javascript setl nocindent
+
+
+" Plugins
+
+""""""""""""""""""""""""""""""
+" => bufExplorer plugin
+""""""""""""""""""""""""""""""
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerFindActive=1
+let g:bufExplorerSortBy='name'
+map <leader>o :BufExplorer<cr>
+
+
+""""""""""""""""""""""""""""""
+" => MRU plugin
+""""""""""""""""""""""""""""""
+let MRU_Max_Entries = 400
+map <leader>f :MRU<CR>
+
+
+""""""""""""""""""""""""""""""
+" => YankRing
+""""""""""""""""""""""""""""""
+if has("win16") || has("win32")
+    " Don't do anything
+else
+    let g:yankring_history_dir = '~/.vim/tmp/yank'
+endif
+
+
+""""""""""""""""""""""""""""""
+" => CTRL-P
+""""""""""""""""""""""""""""""
+let g:ctrlp_working_path_mode = 0
+
+let g:ctrlp_map = '<c-f>'
+map <leader>j :CtrlP<cr>
+map <c-b> :CtrlPBuffer<cr>
+
+let g:ctrlp_max_height = 20
+let g:ctrlp_custom_ignore = 'tmp\|node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+
+""""""""""""""""""""""""""""""
+" => Vim grep
+""""""""""""""""""""""""""""""
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+set grepprg=/bin/grep\ -nH
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-multiple-cursors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:multi_cursor_next_key="\<C-s>"
+
+let g:goyo_width=70
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+nnoremap <silent> <leader>z :Goyo<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic (syntax checker)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_python_checkers=['pyflakes']
+
+
+
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
