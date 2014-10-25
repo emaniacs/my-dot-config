@@ -68,7 +68,7 @@ set scrolloff=0
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 set wildignore+=.git\*,.hg\*,.svn\*
-set wildmode=longest:full,full
+set wildmode=list:longest
 
 " Format multi-line comments
 set comments=sr:/*,mb:*,ex:*/
@@ -92,7 +92,7 @@ set noswapfile
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><cr> :set hlsearch!<cr>
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
