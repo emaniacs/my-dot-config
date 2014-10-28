@@ -27,6 +27,7 @@ Plugin 'vim-scripts/YankRing.vim.git'
 Plugin 'vim-scripts/snipMate.git'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
@@ -197,7 +198,7 @@ map <leader>tm :tabmove
 map <leader>eh :sp 
 map <leader>ev :vsplit  
 
-map <leader>c :Bclose<cr>
+map <leader>c :bdelete<cr>
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 
@@ -214,11 +215,9 @@ map <leader>7b :7b<cr>
 map <leader>8b :8b<cr>
 map <leader>9b :9b<cr>
 map <leader>0b :10b<cr>
-" Close the current buffer
-map <leader>bd :Bclose<cr>
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+map <leader>q :belowright split ~/buffer<cr>:resize -5<cr>
 
 
 map <T-Left> <C-w><Left>
@@ -321,7 +320,6 @@ let g:syntastic_python_checkers=['pyflakes']
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-" Always show the status line
 set laststatus=2
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
