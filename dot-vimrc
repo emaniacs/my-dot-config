@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'jnwhiteh/vim-golang.git'
 Plugin 'junegunn/goyo.vim.git'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree.git'
@@ -28,6 +27,7 @@ Plugin 'vim-scripts/snipMate.git'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-surround'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
@@ -44,7 +44,7 @@ set expandtab
 set matchpairs+=<:>
 
 " Auto change dir
-set autochdir
+set noautochdir
 
 set history=700
  
@@ -340,3 +340,7 @@ endfunction
 map <leader>h :call PhpHelp()<cr>
 map <leader>q ZZ
 map <leader>, <c-w>w
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+
+:call gitgutter#disable()
