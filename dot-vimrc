@@ -217,7 +217,7 @@ map <leader>9b :9b<cr>
 map <leader>0b :10b<cr>
 
 " Quickly open a buffer for scribble
-map <leader>b :call MiniOpen(~/buffer)<cr>
+map <leader>b :call MiniOpen("~/buffer")<cr>
 
 map <T-Left> <C-w><Left>
 map <T-Right> <C-w><Right>
