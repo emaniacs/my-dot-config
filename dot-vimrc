@@ -318,7 +318,7 @@ let g:syntastic_python_checkers=['pyflakes']
 """"""""""""""""""""""""""""""
 set laststatus=2
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 function! PhpHelp()
     let fname = expand("<cword>")
@@ -333,8 +333,14 @@ function! PhpHelp()
     endif
 endfunction
 
-function! MiniOpen(f)
-    execute "belowright split " a:f
+function! MiniOpen(f, ...)
+    if a:0 > 0 && a:1 == "t"
+        let command = "belowright sview"
+    else
+        let command = "belowright split"
+    endif
+
+    execute command a:f
 endfunction
 
 map <leader>h :call PhpHelp()<cr>
