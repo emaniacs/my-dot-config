@@ -1,0 +1,27 @@
+__git_ps(){
+    if test ! -d .git ; then
+        echo -e '\e[01;31mno-git\e[0m'
+    else
+        local branch=$(__git_branch)
+        if test -e $branch; then
+            branch='\e[01;31mnone\e[0m'
+        else
+            branch='\e[01;33m'${branch}'\e[0m'
+        fi  
+
+        local status=$(__git_status)
+        if test $status; then
+            status=',\e[01;35m'${status}'\e[0m'
+        fi  
+
+        echo -e ' git:'${branch}${status}' '
+    fi  
+}
+__git_branch() {
+    git branch 2>/dev/null | grep \* | tr -d '* '
+}
+__git_status(){
+# git status --porcelain | awk '{print $1}' | tr -d '\n' | sed 's/?./U/'
+    git status --porcelain | awk '{print $1}' | tr -d '\n' | sed 's/?./?/'
+}
+export PS1='\e[01;37m? \u@\h \w $(__git_ps)\e[0m \n\e[01;37m$\e[0m '
