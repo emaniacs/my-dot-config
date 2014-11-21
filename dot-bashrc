@@ -56,3 +56,11 @@ alias gitb='git branch'
 alias gpl='git pull'
 alias gita='git add $*'
 
+# other alias
+alias d='dmesg|tail'
+alias fl='fdisk -l'
+alias nx='sudo /home/ardi/bin/nginx153/sbin/nginx'
+alias sp='sudo supervisorctl'
+alias enw='emacs --no-window'
+
+#sshfs -o follow_symlinks -o workaround=rename wew@192.168.9.129:/opt/lampp/htdocs/ /home/ardi/sshfs/wew@wahyu'
