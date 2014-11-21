@@ -37,3 +37,9 @@ argS() {
     def="DEFAULT"
     echo ${1-$def}
 }
+
+# from kfirlavi.com
+is_empty() {
+    local var=$1
+    [[ -z ${var} ]]
+}
