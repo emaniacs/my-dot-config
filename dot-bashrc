@@ -24,3 +24,10 @@ __git_status(){
     git status --porcelain | awk '{print $1}' | tr -d '\n' | tr -s '[a-zA-Z0-9?]'
 }
 export PS1='\e[01;37m? \u@\h \w $(__git_ps)\e[0m \n\e[01;37m$\e[0m '
+
+
+# create dir and cd into dir
+take() {
+    dr=$1
+    mkdir "$dr" && cd "$dr"
+}
