@@ -8,7 +8,7 @@ List of files
 
 - dot-vimrc
   vim configuration (.vimrc)
-- mybash
+- dot-bashrc
   bash configuration (.bashrc)
 - dot-tmux
   tmux configuration (.tmux.conf)
