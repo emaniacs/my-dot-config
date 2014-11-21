@@ -325,7 +325,7 @@ function! PhpHelp()
     if strlen(fname) == 0
         return
     endif
-    let fullpath = "/home/ardi/git/PIV/doc/" . fname . ".txt"
+    let fullpath = $HOME."/git/PIV/doc/" . fname . ".txt"
     if filereadable(fullpath)
         call MiniOpen(fullpath)
     else
