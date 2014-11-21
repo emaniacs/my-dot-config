@@ -43,3 +43,16 @@ is_empty() {
     local var=$1
     [[ -z ${var} ]]
 }
+
+# alias for git
+alias gitlp='git log --pretty=format:"%h%x09%an%x09%ad%x09%s" $*'
+alias gits='git status'
+alias gitc='git commit -m'
+alias gitd='git diff'
+alias gitac='git commit -am'
+alias gito='git checkout'
+alias gith='git log --all --graph --decorate --oneline --abbrev-commit'
+alias gitb='git branch'
+alias gpl='git pull'
+alias gita='git add $*'
+
