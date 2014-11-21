@@ -69,3 +69,63 @@ ltunnel() {
     port=3000
     sudo ssh -L 80:localhost:${1-$port} $(whoami)@localhost
 }
+
+dimount () {
+    local config_file=$HOME/.dimount
+    local host=''
+    local mount_point=''
+    local name=${1-""}
+    local act=${2-mount}
+
+    # read config file
+    if [ -f ${config_file} ] ; then
+        while read line ; do
+            tmp=(${line/ / })
+            if [ ${#tmp[@]} -eq 3 ] ; then
+                if [ ${name} == ${tmp[0]} ]; then
+                    host=${tmp[1]}
+                    mount_point=${tmp[2]}
+                    break
+                fi
+            fi
+        done <${config_file}
+    else
+        echo "No config file ${config_file}"
+        return
+    fi
+
+    if [ -z "${host}" -o -z "${mount_point}" ] ; then
+        echo "Empty host or mount point [${name} -> ${host}:${mount_point}]"
+        return
+    fi
+
+    case "${act}" in
+        umount|u)
+            echo "Unmounting '${mount_point}' from '${host}' "
+            sudo umount -f ${mount_point}
+            pid=$(ps aux|grep ${host}|head -1|awk '{print $2}')
+            # pid=$(pgrep -f sshfs)
+            if test -n ${pid} ; then
+                sudo kill -9 "${pid}"
+            fi
+            ;;
+        remount|r)
+            dimount ${name} umount
+            dimount ${name} mount
+            ;;
+        mount|m)
+            echo "Mounting '${host}' into '${mount_point}'"
+            sshfs -o follow_symlinks -o workaround=rename "${host}" "${mount_point}"
+            ;;
+        *)
+            echo "
+    config file is ${config_file}
+    dimount name <option>
+    option:
+        mount | m : mount filesystem
+        remount | r : mount filesystem
+        umount | u : mount filesystem
+"
+            ;;
+    esac
+}
