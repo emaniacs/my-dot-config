@@ -12,3 +12,5 @@ List of files
   bash configuration (.bashrc)
 - dot-tmux
   tmux configuration (.tmux.conf)
+- dot-screenrc
+  screen configuration (.screenrc)
