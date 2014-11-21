@@ -31,3 +31,9 @@ take() {
     dr=$1
     mkdir "$dr" && cd "$dr"
 }
+
+# for test
+argS() {
+    def="DEFAULT"
+    echo ${1-$def}
+}
