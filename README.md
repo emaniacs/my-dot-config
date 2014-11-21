@@ -10,3 +10,5 @@ List of files
   vim configuration (.vimrc)
 - mybash
   bash configuration (.bashrc)
+- dot-tmux
+  tmux configuration (.tmux.conf)
