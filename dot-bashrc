@@ -64,3 +64,8 @@ alias sp='sudo supervisorctl'
 alias enw='emacs --no-window'
 
 #sshfs -o follow_symlinks -o workaround=rename wew@192.168.9.129:/opt/lampp/htdocs/ /home/ardi/sshfs/wew@wahyu'
+
+ltunnel() {
+    port=3000
+    sudo ssh -L 80:localhost:${1-$port} $(whoami)@localhost
+}
