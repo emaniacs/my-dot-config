@@ -81,10 +81,6 @@ set guifont=Ubuntu\ Mono\ 11
 set encoding=utf8
 set ffs=unix,dos,mac
 
-set nobackup
-set nowb
-set noswapfile
-
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -350,3 +346,11 @@ map <leader>gn :GitGutterNextHunk<cr>
 map <leader>gp :GitGutterPrevHunk<cr>
 
 :call gitgutter#disable()
+
+" backup and swap file
+set backupdir=~/.vim/tmp/backup
+set directory=~/.vim/tmp/swap
+" set nobackup
+" set nowb
+" set noswapfile
+
