@@ -129,3 +129,13 @@ dimount () {
             ;;
     esac
 }
+
+
+generateCTags() {
+    local the_path=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [ -z ${the_path} ] ; then
+        the_path=$(pwd)
+    fi
+
+    ctags -R -f .tags ${the_path}
+}
