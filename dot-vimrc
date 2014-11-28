@@ -357,3 +357,7 @@ set directory=~/.vim/tmp/swap
 " pagedown pageup
 nmap <S-K> <PageUp>
 nmap <S-J> <PageDown>
+
+" center
+nmap <space>j zz
+nmap <space>k zz
