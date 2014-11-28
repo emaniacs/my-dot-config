@@ -361,3 +361,7 @@ nmap <S-J> <PageDown>
 " center
 nmap <space>j zz
 nmap <space>k zz
+
+" tab control
+nmap <leader>. :tabnext<cr>
+nmap <leader>/ :tabprevious<cr>
