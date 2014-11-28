@@ -354,3 +354,6 @@ set directory=~/.vim/tmp/swap
 " set nowb
 " set noswapfile
 
+" pagedown pageup
+nmap <S-K> <PageUp>
+nmap <S-J> <PageDown>
