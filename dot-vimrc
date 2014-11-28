@@ -352,16 +352,17 @@ set tags+=.tags
 
 " unite
 " https://github.com/icholy/dotfiles/blob/master/vimrc#L128-L143
-nmap <C-l> :Unite -start-insert file buffer file_rec<cr>
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_grep_command = 'ag'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
-map <leader>uf :Unite -toggle -start-insert file_rec<cr>
-map <leader>ug :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
-map <leader>u* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
-map <leader>ub :Unite -toggle -start-insert buffer<cr>
-map <leader>uq :Unite -toggle quickfix<cr>
-map <leader>ux :Unite command<cr>
-map <leader>ut :Unite -toggle -start-insert tab<cr>
+nmap <C-l> :Unite -start-insert file buffer file_rec<cr>
+nnoremap <space>f :Unite -toggle -start-insert file_rec<cr>
+nnoremap <space>g :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
+nnoremap <space>* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
+nnoremap <space>b :Unite -toggle -quick-match -auto-preview -start-insert buffer<cr>
+nnoremap <space>q :Unite -toggle quickfix<cr>
+nnoremap <space>x :Unite command<cr>
+nnoremap <space>t :Unite -toggle -start-insert tab<cr>
 " map <leader>up :Unite -toggle -start-insert process<cr>
-
