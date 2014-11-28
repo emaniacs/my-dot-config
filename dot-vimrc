@@ -168,10 +168,6 @@ imap <F10> <ESC>:NERDTreeToggle<CR>
 map <C-F10> :NERDTree<CR>
 imap <S-F10> <ESC>:TagbarToggle<CR>
 
-nmap <F12> :!bash<CR>
-imap <F12> <ESC>:!bash<CR>
-
-
 let mapleader = ","
 let g:mapleader = ","
 
