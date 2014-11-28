@@ -178,11 +178,6 @@ let g:mapleader = ","
 
 nmap <leader>w :w!<cr>
 
-map <leader>tn :tabnew 
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-
 map <leader>eh :sp 
 map <leader>ev :vsplit  
 
