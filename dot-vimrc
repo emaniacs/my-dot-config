@@ -88,10 +88,6 @@ set ffs=unix,dos,mac
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :set hlsearch!<cr>
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -365,3 +361,6 @@ nmap <space>k zz
 " tab control
 nmap <leader>. :tabnext<cr>
 nmap <leader>/ :tabprevious<cr>
+
+nmap <silent> <leader><cr> :set hlsearch!<cr>
+nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
