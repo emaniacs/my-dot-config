@@ -24,6 +24,8 @@ Plugin 'vim-scripts/snipMate.git'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
+Plugin 'rking/ag.vim'
+Plugin 'Shougo/unite.vim'
 
 call vundle#end()
 filetype plugin indent on
