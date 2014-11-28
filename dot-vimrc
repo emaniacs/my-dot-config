@@ -364,3 +364,5 @@ nmap <leader>/ :tabprevious<cr>
 
 nmap <silent> <leader><cr> :set hlsearch!<cr>
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+set tags+=.tags
