@@ -24,8 +24,11 @@ Plugin 'vim-scripts/snipMate.git'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
-Plugin 'rking/ag.vim'
+
 Plugin 'Shougo/unite.vim'
+Plugin 't9md/vim-unite-ack'
+Plugin 'osyo-manga/unite-quickfix'
+Plugin 'rking/ag.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -359,3 +362,19 @@ nmap <silent> <leader><cr> :set hlsearch!<cr>
 nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 set tags+=.tags
+
+" unite
+" https://github.com/icholy/dotfiles/blob/master/vimrc#L128-L143
+nmap <C-l> :Unite -start-insert file buffer file_rec<cr>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+map <leader>uf :Unite -toggle -start-insert file_rec<cr>
+map <leader>ug :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
+map <leader>u* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
+map <leader>ub :Unite -toggle -start-insert buffer<cr>
+map <leader>uq :Unite -toggle quickfix<cr>
+map <leader>ux :Unite command<cr>
+map <leader>ut :Unite -toggle -start-insert tab<cr>
+" map <leader>up :Unite -toggle -start-insert process<cr>
+
