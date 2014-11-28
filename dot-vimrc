@@ -188,17 +188,6 @@ map <leader>p :bp<cr>
 map <leader>l :ls<cr>
 map <leader>m :b#<cr>
 
-map <leader>1b :1b<cr>
-map <leader>2b :2b<cr>
-map <leader>3b :3b<cr>
-map <leader>4b :4b<cr>
-map <leader>5b :5b<cr>
-map <leader>6b :6b<cr>
-map <leader>7b :7b<cr>
-map <leader>8b :8b<cr>
-map <leader>9b :9b<cr>
-map <leader>0b :10b<cr>
-
 " Quickly open a buffer for scribble
 map <leader>b :call MiniOpen("~/buffer")<cr>
 
