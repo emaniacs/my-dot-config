@@ -10,21 +10,17 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'junegunn/goyo.vim.git'
-Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'whatyouhide/vim-gotham'
-Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'yegappan/mru'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary.git'
 Plugin 'unknown/open_file_under_cursor.vim'
 Plugin 'vim-scripts/YankRing.vim.git'
 Plugin 'vim-scripts/snipMate.git'
-Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
@@ -170,7 +166,6 @@ imap <F9> <ESC>:w<CR>i
 map <F10> :NERDTreeToggle<CR>
 imap <F10> <ESC>:NERDTreeToggle<CR>
 map <C-F10> :NERDTree<CR>
-map <S-F10> :TagbarToggle<CR>
 imap <S-F10> <ESC>:TagbarToggle<CR>
 
 nmap <F12> :!bash<CR>
