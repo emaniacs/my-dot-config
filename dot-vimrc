@@ -130,7 +130,6 @@ if has("gui_running")
     colorscheme gotham
     set guioptions-=T
     set guioptions-=e
-    set t_Co=256
     " set guitablabel=%M\ %t
     let g:airline_theme = 'luna'
     set cursorline
@@ -335,7 +334,7 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 nmap <C-l> :Unite -start-insert file buffer file_rec<cr>
-nnoremap <space>f :Unite -toggle -start-insert file_rec<cr>
+nnoremap <space>f :Unite -toggle -start-insert file_rec/async<cr>
 nnoremap <space>g :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
 nnoremap <space>* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
 nnoremap <space>b :Unite -toggle -quick-match -auto-preview -start-insert buffer<cr>
