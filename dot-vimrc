@@ -132,108 +132,9 @@ endif
 set laststatus=2
 " }}}
 
-" Another shortcut {{{
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-nnoremap j gj
-nnoremap k gk
-
-" pagedown pageup
-nmap K <PageUp>
-nmap J <PageDown>
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-map <A-Left> :tabprevious<CR>
-imap <A-Left> <ESC>:tabprevious<CR>
-map <A-Right> :tabnext<CR>
-imap <A-Right> <ESC>:tabnext<CR>
-
-nmap <F8> :tabnew 
-imap <F8> <ESC>:tabnew 
-
-map <F9> :w<CR>
-imap <F9> <ESC>:w<CR>i
-
-map <F10> :NERDTreeToggle<CR>
-imap <F10> <ESC>:NERDTreeToggle<CR>
-map <C-F10> :NERDTree<CR>
-imap <S-F10> <ESC>:TagbarToggle<CR>
-
-map <T-Left> <C-w><Left>
-map <T-Right> <C-w><Right>
-map <T-Up> <C-w><Up>
-map <T-Down> <C-w><Down>
-map <T-q> <C-w>q
-
-map <A-x> "+x
-imap <A-x> <ESC>"+xi
-map <A-v> "+gP
-imap <A-v> <ESC>"+gPi
-map <A-c> "+y
-imap <A-c> <ESC>"+yi
-
-inoremap <C-space> <esc>
-nnoremap ; :
-nnoremap R "_d
-
-
-
-"}}}
-
 " Session {{{
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
-" }}}
-
-" Leader shorcut {{{
-let mapleader = ","
-let g:mapleader = ","
-
-nmap <leader>w :w!<cr>
-map <leader>d :bdelete<cr>
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
-map <leader>m :b#<cr>
-map <leader>l :ls<cr>
-map <leader>b :call MiniOpen("~/buffer")<cr>
-map <leader>h :call PhpHelp()<cr>
-map <leader>q ZZ
-map <leader>, <c-w>w
-map <leader>gn :GitGutterNextHunk<cr>
-map <leader>gp :GitGutterPrevHunk<cr>
-map <leader>gd :Git diff %<cr>
-map <leader>gs :Git status<cr>
-map <leader>gc :Git commit -m '
-map <leader>gb :Git blame %<cr>
-map <leader>gA :Git add 
-map <leader>ga :Git add %<cr>
-map <leader>gr :Git reset HEAD %<cr>
-
-" center
-nmap <space>j zz
-nmap <space>k zz
-
-" tab control
-nmap <leader>. :tabnext<cr>
-nmap <leader>/ :tabprevious<cr>
-
-nmap <silent> <leader><cr> :set hlsearch!<cr>
-nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
-nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
 " }}}
 
 " bufExplorer {{{
@@ -421,6 +322,105 @@ let g:lightline = {
             \ },
             \ 'subseparator': { 'left': '|', 'right': '|' }
             \ }
+" }}}
+
+" Another shortcut {{{
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+nnoremap j gj
+nnoremap k gk
+
+" pagedown pageup
+nmap K <PageUp>
+nmap J <PageDown>
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+map <A-Left> :tabprevious<CR>
+imap <A-Left> <ESC>:tabprevious<CR>
+map <A-Right> :tabnext<CR>
+imap <A-Right> <ESC>:tabnext<CR>
+
+nmap <F8> :tabnew 
+imap <F8> <ESC>:tabnew 
+
+map <F9> :w<CR>
+imap <F9> <ESC>:w<CR>i
+
+map <F10> :NERDTreeToggle<CR>
+imap <F10> <ESC>:NERDTreeToggle<CR>
+map <C-F10> :NERDTree<CR>
+imap <S-F10> <ESC>:TagbarToggle<CR>
+
+map <T-Left> <C-w><Left>
+map <T-Right> <C-w><Right>
+map <T-Up> <C-w><Up>
+map <T-Down> <C-w><Down>
+map <T-q> <C-w>q
+
+map <A-x> "+x
+imap <A-x> <ESC>"+xi
+map <A-v> "+gP
+imap <A-v> <ESC>"+gPi
+map <A-c> "+y
+imap <A-c> <ESC>"+yi
+
+inoremap <C-space> <esc>
+nnoremap ; :
+nnoremap R "_d
+
+
+
+"}}}
+
+" Leader shorcut {{{
+let mapleader = ","
+let g:mapleader = ","
+
+nmap <leader>w :w!<cr>
+map <leader>d :bdelete<cr>
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>m :b#<cr>
+map <leader>l :ls<cr>
+map <leader>b :call MiniOpen("~/buffer")<cr>
+map <leader>h :call PhpHelp()<cr>
+map <leader>q ZZ
+map <leader>, <c-w>w
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>gd :Git diff %<cr>
+map <leader>gs :Git status<cr>
+map <leader>gc :Git commit -m '
+map <leader>gb :Git blame %<cr>
+map <leader>gA :Git add 
+map <leader>ga :Git add %<cr>
+map <leader>gr :Git reset HEAD %<cr>
+
+" center
+nmap <space>j zz
+nmap <space>k zz
+
+" tab control
+nmap <leader>. :tabnext<cr>
+nmap <leader>/ :tabprevious<cr>
+
+nmap <silent> <leader><cr> :set hlsearch!<cr>
+nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
+nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
