@@ -1,9 +1,8 @@
 " merge from https://github.com/amix/vimrc
 
-" Vundle
+" Vundle {{{
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -24,71 +23,61 @@ Plugin 'vim-scripts/snipMate.git'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
-
 Plugin 'Shougo/unite.vim'
 Plugin 't9md/vim-unite-ack'
 Plugin 'osyo-manga/unite-quickfix'
 Plugin 'rking/ag.vim'
-
+Plugin 'altercation/vim-colors-solarized.git'
 call vundle#end()
 filetype plugin indent on
-
-" Enable line numbers
-set number
+" }}}
  
-" Tab indentions
+" Tab indentions {{{
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+" }}}
+
+" Misc SET{{{
 set matchpairs+=<:>
+
+set tags+=.tags
 
 " Auto change dir
 set noautochdir
 
 set history=700
- 
-" Use hard tabs for make files
-autocmd FileType make setlocal noexpandtab
- 
-" Syntax highlighting
-syntax on
+set hidden
+
+" Enable line numbers
+set number
  
 " Auto indention
 set autoindent
 set cindent
 
+" Search
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" centering scroll
-set scrolloff=0
- 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-set wildignore+=.git\*,.hg\*,.svn\*
-set wildmode=list:longest
-
-" Format multi-line comments
+" Format multi-line comments, Fold
 set comments=sr:/*,mb:*,ex:*/
 set formatoptions+=r
 set foldmethod=marker
 set foldmarker={,}
+set foldlevelstart=10
 
-set guifont=Ubuntu\ Mono\ 11
-set encoding=utf8
-set ffs=unix,dos,mac
-
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
+ 
+" Use hard tabs for make files
+autocmd FileType make setlocal noexpandtab
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -98,27 +87,30 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-" Remap VIM 0 to first non-blank character
-map 0 ^
+command W w !sudo tee % > /dev/null
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+au BufRead,BufNewFile *.php set ft=php.html
+au BufRead,BufNewFile *.tpl set ft=php.html
 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
+au BufRead,BufNewFile *.md setlocal textwidth=80
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" backup and swap file
+set backupdir=~/.vim/tmp/backup
+set noswapfile
+
+au FileType python setl foldmethod=indent<cr>
+
+" }}}
+ 
+" Gui, color {{{
+" Syntax highlighting
+syntax on
+
+set guifont=Ubuntu\ Mono\ 11
+set encoding=utf8
+set ffs=unix,dos,mac
+
+set lazyredraw
 
 set guioptions-=r
 set guioptions-=R
@@ -127,29 +119,42 @@ set guioptions-=L
 
 set t_Co=256
 if has("gui_running")
-    " colorscheme desert
-    colorscheme gotham
+    set background=dark
+    colorscheme molokai
     set guioptions-=T
     set guioptions-=e
-    " set guitablabel=%M\ %t
     set cursorline
 else
-    colorscheme slate
+    colorscheme molokai
     set nocursorline
 endif
 
-let g:session_autosave = 'yes'
-let g:session_autoload = 'no'
+set laststatus=2
+" }}}
 
-command W w !sudo tee % > /dev/null
+" Another shortcut {{{
+" Remap VIM 0 to first non-blank character
+map 0 ^
 
-au BufRead,BufNewFile *.php set ft=php.html
-au BufRead,BufNewFile *.tpl set ft=php.html
-let g:syntastic_html_checkers=['']
+nnoremap j gj
+nnoremap k gk
 
-au BufRead,BufNewFile *.md setlocal textwidth=80
-" map <F1>  
-"
+" pagedown pageup
+nmap K <PageUp>
+nmap J <PageDown>
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 map <A-Left> :tabprevious<CR>
 imap <A-Left> <ESC>:tabprevious<CR>
 map <A-Right> :tabnext<CR>
@@ -166,37 +171,12 @@ imap <F10> <ESC>:NERDTreeToggle<CR>
 map <C-F10> :NERDTree<CR>
 imap <S-F10> <ESC>:TagbarToggle<CR>
 
-let mapleader = ","
-let g:mapleader = ","
-
-nmap <leader>w :w!<cr>
-
-map <leader>eh :sp 
-map <leader>ev :vsplit  
-
-map <leader>d :bdelete<cr>
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
-
-map <leader>l :ls<cr>
-map <leader>m :b#<cr>
-
-" Quickly open a buffer for scribble
-map <leader>b :call MiniOpen("~/buffer")<cr>
-
 map <T-Left> <C-w><Left>
 map <T-Right> <C-w><Right>
 map <T-Up> <C-w><Up>
 map <T-Down> <C-w><Down>
 map <T-q> <C-w>q
-" map <T-=> <C-w>=
-" map <T-_> <C-w>_
-" map <T-<> <C-w><
-" map <T->> <C-w>>
-" map <T-+> <C-w>+
- " map <T--> <C-w>-
-" map <T-|> <C-w>|
-"
+
 map <A-x> "+x
 imap <A-x> <ESC>"+xi
 map <A-v> "+gP
@@ -208,63 +188,85 @@ inoremap <C-space> <esc>
 nnoremap ; :
 nnoremap R "_d
 
-au FileType python map <buffer> F :set foldmethod=indent<cr>
-au FileType javascript setl nocindent
 
 
-" Plugins
+"}}}
 
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
+" Session {{{
+let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
+" }}}
+
+" Leader shorcut {{{
+let mapleader = ","
+let g:mapleader = ","
+
+nmap <leader>w :w!<cr>
+map <leader>d :bdelete<cr>
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>m :b#<cr>
+map <leader>l :ls<cr>
+map <leader>b :call MiniOpen("~/buffer")<cr>
+map <leader>h :call PhpHelp()<cr>
+map <leader>q ZZ
+map <leader>, <c-w>w
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>gd :Git diff %<cr>
+map <leader>gs :Git status<cr>
+map <leader>gc :Git commit -m '
+map <leader>gb :Git blame %<cr>
+map <leader>gA :Git add 
+map <leader>ga :Git add %<cr>
+map <leader>gr :Git reset HEAD %<cr>
+
+" center
+nmap <space>j zz
+nmap <space>k zz
+
+" tab control
+nmap <leader>. :tabnext<cr>
+nmap <leader>/ :tabprevious<cr>
+
+nmap <silent> <leader><cr> :set hlsearch!<cr>
+nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" }}}
+
+" bufExplorer {{{
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
 map <leader>o :BufExplorer<cr>
+" }}}
 
-
-""""""""""""""""""""""""""""""
-" => YankRing
-""""""""""""""""""""""""""""""
+" YankRing {{{
 if has("win16") || has("win32")
     " Don't do anything
 else
     let g:yankring_history_dir = '~/.vim/tmp/yank'
 endif
+" }}}
 
-""""""""""""""""""""""""""""""
-" => Vim grep
-""""""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
-set grepprg=/bin/grep\ -nH
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-multiple-cursors {{{
 let g:multi_cursor_next_key='<C-i>'
+" }}}
 
+" Goyo {{{
 let g:goyo_width=70
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
+" }}}
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic {{{
 let g:syntastic_python_checkers=['pyflakes']
+let g:syntastic_html_checkers=['']
+" }}}
 
-
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-set laststatus=2
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
+" Functions {{{
 function! PhpHelp()
     let fname = expand("<cword>")
     if strlen(fname) == 0
@@ -288,85 +290,18 @@ function! MiniOpen(f, ...)
     execute command a:f
 endfunction
 
-map <leader>h :call PhpHelp()<cr>
-map <leader>q ZZ
-map <leader>, <c-w>w
-map <leader>gn :GitGutterNextHunk<cr>
-map <leader>gp :GitGutterPrevHunk<cr>
-
-:call gitgutter#disable()
-
-" backup and swap file
-set backupdir=~/.vim/tmp/backup
-set directory=~/.vim/tmp/swap
-" set nobackup
-" set nowb
-" set noswapfile
-
-" pagedown pageup
-nmap <S-K> <PageUp>
-nmap <S-J> <PageDown>
-
-" center
-nmap <space>j zz
-nmap <space>k zz
-
-" tab control
-nmap <leader>. :tabnext<cr>
-nmap <leader>/ :tabprevious<cr>
-
-nmap <silent> <leader><cr> :set hlsearch!<cr>
-nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-set tags+=.tags
-
-" unite
-" https://github.com/icholy/dotfiles/blob/master/vimrc#L128-L143
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_history_grep_command = 'ag'
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-nmap <C-l> :Unite -start-insert file buffer file_rec<cr>
-nnoremap <space>f :Unite -toggle -start-insert file_rec/async<cr>
-nnoremap <space>g :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
-nnoremap <space>* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
-nnoremap <space>b :Unite -toggle -quick-match -auto-preview -start-insert buffer<cr>
-nnoremap <space>q :Unite -toggle quickfix<cr>
-nnoremap <space>x :Unite command<cr>
-nnoremap <space>t :Unite -toggle -start-insert tab<cr>
-" map <leader>up :Unite -toggle -start-insert process<cr>
-
-
-" lightline
-let g:lightline = {
-            \ 'colorscheme': 'wombat',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'workingdir', 'filename' ], ['ctrlpmark'] ],
-            \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'component_function': {
-            \   'fugitive': 'MyFugitive',
-            \   'filename': 'MyFilename',
-            \   'workingdir': 'GetCWD',
-            \   'fileformat': 'MyFileformat',
-            \   'filetype': 'MyFiletype',
-            \   'fileencoding': 'MyFileencoding',
-            \   'mode': 'MyMode',
-            \   'ctrlpmark': 'CtrlPMark',
-            \ },
-            \ 'component_expand': {
-            \   'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \   'syntastic': 'error',
-            \ },
-            \ 'subseparator': { 'left': '▶', 'right': '◀' }
-            \ }
-
 function! GetCWD()
     let dir = getcwd()
-    return  winwidth(0) > 100 ? dir : split(dir, '/')[-1] 
+    if len(dir) > 47 || winwidth(0) < 100
+        let spdir = split(dir, '/')
+        let target= []
+        for name in spdir[0:-2]
+            call add(target, name[0])
+        endfor
+        return '/'. join(target, '/') . '/' . spdir[-1]
+    endif
+
+    return dir
 endfunction
 
 function! MyModified()
@@ -382,33 +317,18 @@ function! MyFilename()
     return fname == 'ControlP' ? g:lightline.ctrlp_item :
                 \ fname =~ '__Gundo\|NERD_tree' ? '' :
                 \ &ft == 'unite' ? unite#get_status_string() :
-                \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-                \ ('' != fname ? fname : '[No Name]') .
-                \ ('' != MyModified() ? ' ' . MyModified() : '')
+                \ fname!='' ? fname : '[No Name]'
 endfunction
 
-function! MyFugitive()
+function! MyGitBranch()
     try
         if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = ''  " edit here for cool mark
             let _ = fugitive#head()
-            return strlen(_) ? mark._ : ''
+            return strlen(_) ? _ : ''
         endif
     catch
     endtry
     return ''
-endfunction
-
-function! MyFileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
@@ -416,40 +336,89 @@ function! MyMode()
     return fname == 'ControlP' ? 'CtrlP' :
                 \ fname == '__cwd__' ? 'getcwd' :
                 \ fname =~ 'NERD_tree' ? 'NERDTree' :
-                \ &ft == 'unite' ? 'Unite' :
-                \ winwidth(0) > 60 ? lightline#mode() : ''
+                \ lightline#mode() == 'NORMAL' ? 'N' :
+                \ lightline#mode() == 'INSERT' ? 'I' :
+                \ lightline#mode() == 'VISUAL' ? 'V' :
+                \ lightline#mode() == 'V-LINE' ? 'V' :
+                \ lightline#mode() == 'V-BLOCK' ? 'V' :
+                \ lightline#mode() == 'REPLACE' ? 'R' :
+                \ lightline#mode()
 endfunction
 
-function! CtrlPMark()
-    if expand('%:t') =~ 'ControlP'
-        call lightline#link('iR'[g:lightline.ctrlp_regex])
-        return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-                    \ , g:lightline.ctrlp_next], 0)
-    else
-        return ''
-    endif
-endfunction
+" }}}
 
-let g:ctrlp_status_func = {
-            \ 'main': 'CtrlPStatusFunc_1',
-            \ 'prog': 'CtrlPStatusFunc_2',
-            \ }
+" GitGutter {{{
+:call gitgutter#disable()
+" }}}
 
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-    let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
-    return lightline#statusline(0)
-endfunction
+" unite {{{
+" https://github.com/icholy/dotfiles/blob/master/vimrc#L128-L143
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_grep_command = 'ag'
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
-function! CtrlPStatusFunc_2(str)
-    return lightline#statusline(0)
-endfunction
-
-function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
-endfunction
-
+nnoremap <space>f :Unite -toggle -start-insert file_rec/async<cr>
+nnoremap <space>g :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
+nnoremap <space>* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
+nnoremap <space>b :Unite -toggle -auto-preview -start-insert buffer<cr>
+nnoremap <space>q :Unite -toggle quickfix<cr>
+nnoremap <space>x :Unite command<cr>
+nnoremap <space>t :Unite -toggle -start-insert tab<cr>
+" map <leader>up :Unite -toggle -start-insert process<cr>
 let g:unite_force_overwrite_statusline = 0
+
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+            \ 'ignore_pattern', join([
+            \ '\.git/',
+            \ ], '\|'))
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+nnoremap <C-f> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+autocmd FileType unite call s:unite_settings()
+
+function! s:unite_settings()
+    let b:SuperTabDisabled=1
+    imap <buffer> <C-j> <Plug>(unite_select_next_line)
+    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+    imap <silent><buffer><expr> <C-x> unite#do_action('split')
+    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+endfunction
+" }}}
+
+" lightline {{{
+let g:lightline = {
+            \ 'colorscheme' : 'wew',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'gitb'], ['ro', 'mdf'], ['workingdir','filename' ]],
+		    \   'right': [ 
+		    \            [ 'percent' ],
+		    \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \ },
+            \ 'inactive': {
+            \   'right': [ ['mdf'], ['percent']]
+            \ },
+            \ 'component_function': {
+            \   'gitb': 'MyGitBranch',
+            \   'filename': 'MyFilename',
+            \   'workingdir': 'GetCWD',
+            \   'mode': 'MyMode',
+            \   'ro': 'MyReadonly',
+            \   'mdf': 'MyModified',
+            \ },
+            \ 'component_expand': {
+            \   'syntastic': 'SyntasticStatuslineFlag',
+            \ },
+            \ 'component_type': {
+            \   'syntastic': 'error',
+            \ },
+            \ 'subseparator': { 'left': '|', 'right': '|' }
+            \ }
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
