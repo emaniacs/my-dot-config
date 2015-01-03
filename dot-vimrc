@@ -248,7 +248,7 @@ function! MyMode()
 endfunction
 
 " github.com/dereksyatt/vim-config
-function! FindGitdirOrRoot()
+function! FindGitDirOrRoot()
     let curdir = expand('%:p:h')
     let gitdir = finddir('.git', curdir . ';')
     if gitdir != ''
@@ -424,7 +424,9 @@ nmap <leader>. :tabnext<cr>
 nmap <leader>/ :tabprevious<cr>
 
 nmap <silent> <leader><cr> :set hlsearch!<cr>
-nmap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nmap <leader>cd :lcd %:h<cr>
+nmap <leader>cg :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
+nmap <leader>cc :!mkdir -p %:p:h<cr>
 
 " http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
 nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
