@@ -247,6 +247,17 @@ function! MyMode()
                 \ lightline#mode()
 endfunction
 
+" github.com/dereksyatt/vim-config
+function! FindGitdirOrRoot()
+    let curdir = expand('%:p:h')
+    let gitdir = finddir('.git', curdir . ';')
+    if gitdir != ''
+        return substitute(gitdir, '\/\.git$', '', '')
+    else
+        return '/'
+    endif
+endfunction
+
 " }}}
 
 " unite {{{
