@@ -14,7 +14,6 @@ Plugin 'scrooloose/syntastic.git'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary.git'
 Plugin 'unknown/open_file_under_cursor.vim'
@@ -27,7 +26,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 't9md/vim-unite-ack'
 Plugin 'osyo-manga/unite-quickfix'
 Plugin 'rking/ag.vim'
-Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'kurkale6ka/vim-pairs'
 call vundle#end()
 filetype plugin indent on
 " }}}
@@ -250,10 +249,6 @@ endfunction
 
 " }}}
 
-" GitGutter {{{
-:call gitgutter#disable()
-" }}}
-
 " unite {{{
 " https://github.com/icholy/dotfiles/blob/master/vimrc#L128-L143
 let g:unite_source_history_yank_enable = 1
@@ -407,6 +402,7 @@ map <leader>gb :Git blame %<cr>
 map <leader>gA :Git add 
 map <leader>ga :Git add %<cr>
 map <leader>gr :Git reset HEAD %<cr>
+map <leader>go :Git checkout %
 
 " center
 nmap <space>j zz
