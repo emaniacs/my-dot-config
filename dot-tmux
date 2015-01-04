@@ -50,8 +50,8 @@ bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
 # Shift arrow to switch windows
-bind -n S-Left  previous-window
-bind -n S-Right next-window
+bind -n M-i previous-window
+bind -n M-o next-window
 
 # No delay for escape key press
 set -sg escape-time 0
@@ -62,9 +62,8 @@ bind r source-file ~/.tmux.conf
 # THEME
 source-file "${HOME}/git/tmux-themepack/powerline/block/yellow.tmuxtheme"
 
-
 # enable copy text
 #set -g default-command "reattach-to-user-namespace -l zsh"
 #
 
-# run-shell /home/ardi/git/tmux-resurrect/resurrect.tmux
+run-shell /home/ardi/git/tmux-resurrect/resurrect.tmux
