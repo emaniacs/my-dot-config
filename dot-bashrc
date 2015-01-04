@@ -139,3 +139,10 @@ generate_ctags() {
 
     ctags -R -f .tags ${the_path}
 }
+
+# fix color on tmux
+alias tmux="TERM=screen-256color-bce EVENT_NOEPOLL=1 tmux"
+# tmux 2.0
+alias tmx="TERM=screen-256color-bce ~/git/tmux-code/tmux"
+
+# vim:ft=sh
