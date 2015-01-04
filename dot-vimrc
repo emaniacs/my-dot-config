@@ -142,7 +142,7 @@ let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
+nmap <leader>o :BufExplorer<cr>
 " }}}
 
 " YankRing {{{
@@ -255,7 +255,7 @@ function! FindGitDirOrRoot()
     if gitdir != ''
         return substitute(gitdir, '\/\.git$', '', '')
     else
-        return '/'
+        return curdir
     endif
 endfunction
 
@@ -271,7 +271,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap <space>f :Unite -toggle -start-insert file_rec/async<cr>
 nnoremap <space>g :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
 nnoremap <space>* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
-nnoremap <space>b :Unite -toggle -auto-preview -start-insert buffer<cr>
+nnoremap <space>b :Unite -toggle -auto-preview <cr>
 nnoremap <space>q :Unite -toggle quickfix<cr>
 nnoremap <space>x :Unite command<cr>
 nnoremap <space>t :Unite -toggle -start-insert tab<cr>
