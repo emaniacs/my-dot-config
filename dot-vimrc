@@ -97,7 +97,8 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 set backupdir=~/.vim/tmp/backup
 set noswapfile
 
-au FileType python setl foldmethod=indent<cr>
+au FileType python setl foldmethod=indent
+au FileType html setl foldmethod=indent
 
 " }}}
  
