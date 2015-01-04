@@ -1,1 +1,3 @@
 termcapinfo xterm* ti@:te@
+
+#vim:set ft=conf
