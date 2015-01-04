@@ -1,20 +1,31 @@
+# scroll
 termcapinfo xterm* ti@:te@
+
+# turnoff startup message
 startup_message off
+
+# statusline
 hardstatus alwayslastline
 # hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
 # hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
 
+# change prefix key into A-a
 escape ^Aa
 register S ^A
-
 bindkey "^[a" process S
+
+# shortcut to next windows
 bindkey "^[h" prev
 bindkey "^[l" next
 
+# index start with 1
 bind c screen 1
 bind ^c screen 1
 bind 0 select 10
 screen 1
+
+# remove residual editor text
+altscreen on
 
 #vim:set ft=conf
