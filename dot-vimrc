@@ -307,7 +307,7 @@ let g:lightline = {
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], [ 'gitb'], ['ro', 'mdf'], ['workingdir','filename' ]],
 		    \   'right': [ 
-		    \            [ 'percent' ],
+		    \            [ 'lineinfo', 'percent' ],
 		    \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'inactive': {
