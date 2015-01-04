@@ -5,4 +5,11 @@ hardstatus alwayslastline
 # hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
 
+escape ^Aa
+register S ^A
+
+bindkey "^[a" process S
+bindkey "^[h" prev
+bindkey "^[l" next
+
 #vim:set ft=conf
