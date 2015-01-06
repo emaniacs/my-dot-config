@@ -80,7 +80,7 @@ set -g status-bg colour233
 set -g status-left-bg colour233
 set -g status-left-fg colour243
 set -g status-left-length 40
-set -g status-left "#[fg=colour227,bg=colour0,bold]😎 😃 "
+set -g status-left "#[fg=colour0,bg=colour227,bold]😎 😃 "
 
 # Right side of status bar
 set -g status-right-bg colour233
