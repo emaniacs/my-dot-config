@@ -123,12 +123,11 @@ if has("gui_running")
     colorscheme molokai
     set guioptions-=T
     set guioptions-=e
-    set cursorline
 else
     colorscheme molokai
-    set nocursorline
 endif
 
+    set cursorline
 set laststatus=2
 " }}}
 
@@ -430,6 +429,7 @@ nmap <leader>cc :!mkdir -p %:p:h<cr>
 
 " http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
 nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
+nnoremap <leader>F :echo expand('%:p')<cr>
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
