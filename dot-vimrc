@@ -248,17 +248,6 @@ function! MyMode()
                 \ lightline#mode()
 endfunction
 
-" github.com/dereksyatt/vim-config
-function! FindGitDirOrRoot()
-    let curdir = expand('%:p:h')
-    let gitdir = finddir('.git', curdir . ';')
-    if gitdir != ''
-        return substitute(gitdir, '\/\.git$', '', '')
-    else
-        return curdir
-    endif
-endfunction
-
 " }}}
 
 " unite {{{
@@ -425,7 +414,7 @@ nmap <leader>/ :tabprevious<cr>
 
 nmap <silent> <leader><cr> :set hlsearch!<cr>
 nmap <leader>cd :lcd %:h<cr>
-nmap <leader>cg :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
+nmap <leader>cg :lcd <c-r>=system('git rev-parse --show-toplevel')<cr><cr>
 nmap <leader>cc :!mkdir -p %:p:h<cr>
 
 " http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
