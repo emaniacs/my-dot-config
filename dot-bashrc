@@ -1,5 +1,6 @@
 __git_ps(){
-    if test ! -d .git ; then
+    local worktree=$(git rev-parse --show-toplevel 2>/dev/null)
+    if test ! -d "$worktree" ; then
         echo -e $(tput setaf 1)'no-git'$(tput setaf 9)
     else
         local branch=$(__git_branch)
