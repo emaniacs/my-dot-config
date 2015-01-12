@@ -27,6 +27,7 @@ Plugin 't9md/vim-unite-ack'
 Plugin 'osyo-manga/unite-quickfix'
 Plugin 'rking/ag.vim'
 Plugin 'kurkale6ka/vim-pairs'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 filetype plugin indent on
 " }}}
@@ -365,7 +366,7 @@ map <F9> :NERDTree %<CR>
 
 map <F10> :NERDTreeToggle<CR>
 imap <F10> <ESC>:NERDTreeToggle<CR>
-map <C-F10> :NERDTree<CR>
+map <S-F10> :NERDTree %<CR>
 imap <S-F10> <ESC>:TagbarToggle<CR>
 
 map <T-Left> <C-w><Left>
