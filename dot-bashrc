@@ -12,10 +12,10 @@ __git_ps(){
 
         local status=$(__git_status)
         if test $status; then
-            status=",$(tput setaf 5)${status}$(tput setaf 9)"
+            status=";$(tput setaf 5)${status}$(tput setaf 9)"
         fi  
 
-        echo -e ' git:'${branch}${status}' '
+        echo -e ' git:'${branch}${status}';'$(tput setaf 153)$worktree' '
     fi  
 }
 __git_branch() {
@@ -24,7 +24,8 @@ __git_branch() {
 __git_status(){
     git status --porcelain | awk '{print $1}' | tr -d '\n' | tr -s '[a-zA-Z0-9?]'
 }
-export PS1=$(tput bold)'? \u@\h \w $(__git_ps)'$(tput sgr0)' \n$ ' 
+# export PS1=$(tput bold)'? \u@\h \w $(__git_ps)'$(tput sgr0)' \n$ ' 
+export PS1=$(tput bold)'? $(tput setaf 6)\w$(tput sgr0) $(tput bold)$(__git_ps)'$(tput sgr0)' \n$ ' 
 
 
 # create dir and cd into dir
