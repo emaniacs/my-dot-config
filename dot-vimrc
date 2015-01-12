@@ -403,6 +403,8 @@ map <leader>gA :Git add
 map <leader>ga :Git add %<cr>
 map <leader>gr :Git reset HEAD %<cr>
 map <leader>go :Git checkout %
+map <leader>gl :Git log --pretty=format:"\%h\%x09\%an\%x09\%ad\%x09\%s" -20 <cr>
+map <leader>gL :Git log --pretty=format:"\%h\%x09\%an\%x09\%ad\%x09\%s"
 
 " center
 nmap <space>j zz
