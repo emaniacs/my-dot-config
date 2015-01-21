@@ -175,7 +175,7 @@ function! PhpHelp()
     if strlen(fname) == 0
         return
     endif
-    let fullpath = $HOME."/git/PIV/doc/" . fname . ".txt"
+    let fullpath = $HOME."/git/PIV/doc/" . substitute(fname,"_", "-", "g") . ".txt"
     if filereadable(fullpath)
         call MiniOpen(fullpath)
     else
