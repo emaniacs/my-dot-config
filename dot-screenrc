@@ -8,7 +8,7 @@ startup_message off
 hardstatus alwayslastline
 #hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
 # hardstatus alwayslastline "%{rk}%H %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
-hardstatus string ":)%{.kW}%-w%{.yW}%n %t%{-}%+w %=%{..G} %H %{..Y} %d/%m/%y %c "
+hardstatus string ":) %{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %d/%m/%Y %c;%a "
 
 # change prefix key into A-a
 escape ^Aa
