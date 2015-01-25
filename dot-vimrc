@@ -28,6 +28,7 @@ Plugin 'osyo-manga/unite-quickfix'
 Plugin 'rking/ag.vim'
 Plugin 'kurkale6ka/vim-pairs'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'tomasr/molokai'
 call vundle#end()
 filetype plugin indent on
 " }}}
