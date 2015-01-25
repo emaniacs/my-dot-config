@@ -71,6 +71,8 @@ set formatoptions+=r
 set foldmethod=marker
 set foldmarker={,}
 set foldlevelstart=10
+" fix error on backspace
+set backspace=eol,indent,start
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
