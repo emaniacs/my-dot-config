@@ -22,9 +22,7 @@ Plugin 'vim-scripts/snipMate.git'
 Plugin 'Shougo/vimproc'
 Plugin 'tpope/vim-surround'
 Plugin 'fatih/vim-go'
-Plugin 'Shougo/unite.vim'
-Plugin 't9md/vim-unite-ack'
-Plugin 'osyo-manga/unite-quickfix'
+Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'kurkale6ka/vim-pairs'
 Plugin 'jiangmiao/auto-pairs'
@@ -223,10 +221,7 @@ endfunction
 
 function! MyFilename()
     let fname = expand('%:t')
-    return fname == 'ControlP' ? g:lightline.ctrlp_item :
-                \ fname =~ '__Gundo\|NERD_tree' ? '' :
-                \ &ft == 'unite' ? unite#get_status_string() :
-                \ fname!='' ? fname : '[No Name]'
+    return fname != '' ? fname : '[No Name]'
 endfunction
 
 function! MyGitBranch()
@@ -256,44 +251,14 @@ endfunction
 
 " }}}
 
-" unite {{{
-" https://github.com/icholy/dotfiles/blob/master/vimrc#L128-L143
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_history_grep_command = 'ag'
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
+" ctrlp {{{
+if executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
 
-nnoremap <space>f :Unite -toggle -start-insert file_rec/async<cr>
-nnoremap <space>g :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite quickfix -auto-preview<cr>
-nnoremap <space>* :exe 'silent Ggrep -i '.expand("<cword> ")<Bar>Unite quickfix <cr>
-nnoremap <space>b :Unite -toggle -auto-preview <cr>
-nnoremap <space>q :Unite -toggle quickfix<cr>
-nnoremap <space>x :Unite command<cr>
-nnoremap <space>t :Unite -toggle -start-insert tab<cr>
-" map <leader>up :Unite -toggle -start-insert process<cr>
-let g:unite_force_overwrite_statusline = 0
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-            \ 'ignore_pattern', join([
-            \ '\.git/',
-            \ ], '\|'))
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-nnoremap <C-f> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-autocmd FileType unite call s:unite_settings()
-
-function! s:unite_settings()
-    let b:SuperTabDisabled=1
-    imap <buffer> <C-j> <Plug>(unite_select_next_line)
-    imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-    imap <silent><buffer><expr> <C-x> unite#do_action('split')
-    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-    imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-    nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
+set wildignore+=*.so,*.swp,*.bak,*.swp,*/.git/*,*/node_modules/*
+let g:ctrlp_show_hidden = 1
 " }}}
 
 " lightline {{{
@@ -432,6 +397,12 @@ nmap <leader>cc :!mkdir -p %:p:h<cr>
 " http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
 nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
 nnoremap <leader>F :echo expand('%:p')<cr>
+
+noremap <leader>j :CtrlPMixed<cr>
+" map <leader>cc :CtrlPMixed<cr>
+" map <leader>cb :CtrlPBuffer<cr>
+" map <leader>ct :CtrlPTag<cr>
+
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
