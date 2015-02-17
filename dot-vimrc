@@ -349,9 +349,9 @@ imap <A-c> <ESC>"+yi
 
 inoremap <C-space> <esc>
 nnoremap ; :
+" nnoremap : ;
+nnoremap \ ,
 nnoremap R "_d
-
-
 
 "}}}
 
@@ -407,7 +407,6 @@ noremap <A-b> :CtrlPBuffer<cr>
 
 
 " }}}
-
 
 "Ag {{{
 nmap <silent> R :Ag "<cword>"<cr> 
