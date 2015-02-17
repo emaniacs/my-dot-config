@@ -3,7 +3,7 @@
 " vim-plug {{{
 call plug#begin('~/.vim/bundle')
 " Plug 'Shougo/vimproc'
-Plug 'emaniacs/open_file_under_cursor.vim'
+Plug 'emaniacs/open_file_under_cursor'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
