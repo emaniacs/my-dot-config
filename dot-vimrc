@@ -25,6 +25,8 @@ Plug 'vim-scripts/snipMate'
 Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
+Plug 'hysd/clever-f.vim'
+
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
 " }}}
@@ -296,6 +298,14 @@ let g:lightline = {
 let g:notes_directories = ['~/Notes']
 " }}}
 
+"Ag {{{
+nmap <silent> R :Ag "<cword>"<cr> 
+"}}}
+
+" clever-f {{{
+let g:clever_f_across_no_line = 0
+" }}}
+
 " Another shortcut {{{
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -407,9 +417,5 @@ noremap <A-b> :CtrlPBuffer<cr>
 
 
 " }}}
-
-"Ag {{{
-nmap <silent> R :Ag "<cword>"<cr> 
-"}}}
 
 " vim:foldmethod=marker:foldlevel=0
