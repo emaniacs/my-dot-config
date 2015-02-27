@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+
+#check xmodmap
+XMODMAP=$(which xmodmap)
+
+if test "$?" != "0" ; then 
+    echo 'Please install xmodmap'
+    exit
+fi
+
 tmpname='/tmp/sce'
 scefile='/tmp/.scefile'
 
@@ -25,5 +34,9 @@ keysym Caps_Lock = Escape
 fi
 
 xmodmap ${tmpname}
-notify-send -t 5000 ${title} ${msg}
+
+if test $(which notify-send) != "" ; then
+    notify-send -t 5000 ${title} ${msg}
+fi
+
 rm -f ${tmpname}
