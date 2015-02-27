@@ -14,3 +14,5 @@ List of files
   tmux configuration (.tmux.conf)
 - dot-screenrc
   screen configuration (.screenrc)
+- sce
+  swap escape and capslock
