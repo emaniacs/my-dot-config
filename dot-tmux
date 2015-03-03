@@ -67,6 +67,14 @@ bind r source-file ~/.tmux.conf
 #set -g default-command "reattach-to-user-namespace -l zsh"
 #
 
+# http://unix.stackexchange.com/questions/15715/getting-tmux-to-copy-a-buffer-to-the-clipboard
+#
+# move x clipboard into tmux paste buffer
+bind p run "xclip -o  | tmux load-buffer - ; tmux paste-buffer"
+# move tmux copy buffer into x clipboard
+bind y run "tmux save-buffer - | xclip -selection clipboard"
+
+
 run-shell /home/ardi/git/tmux-resurrect/resurrect.tmux
 
 
