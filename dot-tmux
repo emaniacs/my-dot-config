@@ -38,7 +38,7 @@ bind l select-pane -R
 
 bind c new-window -c "#{pane_current_path}"
 bind | split-window -h -c "#{pane_current_path}"
-bind v split-window -c "#{pane_current_path}"
+bind h split-window -c "#{pane_current_path}"
 
 
 # Use Alt-vim keys without prefix key to switch panes
