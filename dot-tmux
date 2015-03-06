@@ -70,13 +70,11 @@ bind r source-file ~/.tmux.conf
 # http://unix.stackexchange.com/questions/15715/getting-tmux-to-copy-a-buffer-to-the-clipboard
 #
 # move x clipboard into tmux paste buffer
-bind p run "xclip -o  | tmux load-buffer - ; tmux paste-buffer"
+bind -n C-p run "xclip -o  | tmux load-buffer - ; tmux paste-buffer"
 # move tmux copy buffer into x clipboard
-bind y run "tmux save-buffer - | xclip -selection clipboard"
-
+bind -n C-y run "tmux save-buffer - | xclip -selection clipboard"
 
 run-shell /home/ardi/git/tmux-resurrect/resurrect.tmux
-
 
 # THEME
 # based on github.com/jimeh/tmux-themepack/powerline/block/yellow.tmuxtheme"
