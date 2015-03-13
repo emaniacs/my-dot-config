@@ -73,6 +73,8 @@ set foldmarker={,}
 set foldlevelstart=10
 " fix error on backspace
 set backspace=eol,indent,start
+set list
+set listchars=tab:»·,trail:·,extends:>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
