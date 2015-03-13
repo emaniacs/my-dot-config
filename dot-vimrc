@@ -30,7 +30,7 @@ Plug 'hysd/clever-f.vim'
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
 " }}}
- 
+
 " Tab indentions {{{
 set smartindent
 set tabstop=4
@@ -54,7 +54,7 @@ set hidden
 
 " Enable line numbers
 set number
- 
+
 " Auto indention
 set autoindent
 set cindent
@@ -80,15 +80,15 @@ set listchars=tab:»·,trail:·,extends:>
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
- 
+
 " Use hard tabs for make files
 autocmd FileType make setlocal noexpandtab
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -109,7 +109,7 @@ au FileType python setl foldmethod=indent
 au FileType html setl foldmethod=indent
 
 " }}}
- 
+
 " Gui, color {{{
 " Syntax highlighting
 syntax on
@@ -135,7 +135,7 @@ else
     colorscheme molokai
 endif
 
-    set cursorline
+set cursorline
 set laststatus=2
 " }}}
 
@@ -272,9 +272,9 @@ let g:lightline = {
             \ 'colorscheme' : 'wew',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], [ 'gitb'], ['ro', 'mdf'], ['workingdir','filename' ]],
-		    \   'right': [ 
-		    \            [ 'lineinfo', 'percent' ],
-		    \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \   'right': [ 
+            \            [ 'lineinfo', 'percent' ],
+            \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'inactive': {
             \   'right': [ ['mdf'], ['percent']]
