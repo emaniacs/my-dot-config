@@ -26,6 +26,7 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
 Plug 'hysd/clever-f.vim'
+Plug 'swekaj/php-foldexpr.vim', {'for', 'php'}
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
