@@ -27,6 +27,8 @@ Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
 Plug 'hysd/clever-f.vim'
 Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
+Plug 'sjl/gundo.vim'
+Plug 'vim-scripts/matchit.zip'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
