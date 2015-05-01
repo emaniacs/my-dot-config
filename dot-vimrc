@@ -102,6 +102,11 @@ au BufRead,BufNewFile *.tag set ft=html
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+au BufRead,BufNewFile *.jade setl tabstop=2
+au BufRead,BufNewFile *.jade setl shiftwidth=2
+au BufRead,BufNewFile *.jade setl softtabstop=2
+au BufRead,BufNewFile *.jade setl expandtab
+
 " backup and swap file
 set backupdir=~/.vim/tmp/backup
 set noswapfile
