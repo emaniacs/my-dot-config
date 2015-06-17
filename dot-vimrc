@@ -29,6 +29,8 @@ Plug 'hysd/clever-f.vim'
 Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/matchit.zip'
+Plug 'Valloric/YouCompleteMe'
+Plug 'pelodelfuego/vim-swoop'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -117,6 +119,16 @@ au FileType python setl foldmethod=indent
 au FileType html setl foldmethod=indent
 
 " }}}
+
+
+" tmux
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
 
 " Gui, color {{{
 " Syntax highlighting
@@ -354,6 +366,15 @@ map <F10> :NERDTreeToggle<CR>
 imap <F10> <ESC>:NERDTreeToggle<CR>
 map <S-F10> :NERDTree %<CR>
 imap <S-F10> <ESC>:TagbarToggle<CR>
+
+imap <S-Up> <ESC>:winc +<cr><esc>i
+map <S-Up> :winc +<cr>
+imap <S-Down> <ESC>:winc -<cr><esc>i
+map <S-Down> :winc -<cr>
+imap <S-Right> <ESC>:winc ><cr><esc>i
+map <S-Right> :winc ><cr>
+imap <S-Left> <ESC>:winc <<cr><esc>i
+map <S-Left> :winc <<cr>
 
 map <T-Left> <C-w><Left>
 map <T-Right> <C-w><Right>
