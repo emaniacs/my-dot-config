@@ -4,6 +4,7 @@ set -g base-index 1
 
 # Automatically set window title
 set-window-option -g automatic-rename on
+set-window-option -g xterm-keys on
 set-option -g set-titles on
 
 set -g default-terminal "screen-256color"
@@ -18,10 +19,10 @@ set -g mouse-select-window on
 setw -g mode-keys vi
 setw -g monitor-activity on
 
-bind-key J resize-pane -D 5
-bind-key K resize-pane -U 5
-bind-key H resize-pane -L 5
-bind-key L resize-pane -R 5
+# bind-key J resize-pane -D 5
+# bind-key K resize-pane -U 5
+# bind-key H resize-pane -L 5
+# bind-key L resize-pane -R 5
 
 bind-key m last-window
 
@@ -30,7 +31,7 @@ bind-key M-k resize-pane -U
 bind-key M-h resize-pane -L
 bind-key M-l resize-pane -R
 
-# Vim style pane selection
+# # Vim style pane selection
 bind h select-pane -L
 bind j select-pane -D 
 bind k select-pane -U
@@ -41,17 +42,17 @@ bind | split-window -h -c "#{pane_current_path}"
 bind h split-window -c "#{pane_current_path}"
 
 
-# Use Alt-vim keys without prefix key to switch panes
+# # Use Alt-vim keys without prefix key to switch panes
 bind -n M-h select-pane -L
 bind -n M-j select-pane -D 
 bind -n M-k select-pane -U
 bind -n M-l select-pane -R
 
 # Use Alt-arrow keys without prefix key to switch panes
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
+# bind -n M-Left select-pane -L
+# bind -n M-Right select-pane -R
+# bind -n M-Up select-pane -U
+# bind -n M-Down select-pane -D
 
 # Shift arrow to switch windows
 bind -n M-i previous-window
@@ -70,12 +71,12 @@ bind r source-file ~/.tmux.conf
 # http://unix.stackexchange.com/questions/15715/getting-tmux-to-copy-a-buffer-to-the-clipboard
 #
 # move x clipboard into tmux paste buffer
-bind C-p run "xclip -o  | tmux load-buffer - ; tmux paste-buffer"
+# bind -n M-p run-shell "xclip -o  | tmux load-buffer - ; tmux paste-buffer"
 # move tmux copy buffer into x clipboard
-bind -c C-y run "tmux save-buffer - | xclip -selection clipboard"
+# bind -n M-y run-shell "tmux save-buffer - | xclip -selection clipboard"
 # bind-key vi-copy y copy-pipe 'xclip -selection clipboard >/dev/null'
 
-run-shell /home/ardi/git/tmux-resurrect/resurrect.tmux
+run-shell ~/git/tmux-resurrect/resurrect.tmux
 
 # THEME
 # based on github.com/jimeh/tmux-themepack/powerline/block/yellow.tmuxtheme"
