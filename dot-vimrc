@@ -31,6 +31,7 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'Valloric/YouCompleteMe'
 Plug 'pelodelfuego/vim-swoop'
+Plug 'Wutzara/vim-materialtheme'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
