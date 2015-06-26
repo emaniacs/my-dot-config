@@ -3,7 +3,7 @@
 " vim-plug {{{
 call plug#begin('~/.vim/bundle')
 " Plug 'Shougo/vimproc'
-Plug 'emaniacs/open_file_under_cursor'
+Plug 'emaniacs/open_file_under_cursor.vim'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -25,7 +25,7 @@ Plug 'vim-scripts/snipMate'
 Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
-Plug 'hysd/clever-f.vim'
+Plug 'rhysd/clever-f.vim'
 Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/matchit.zip'
