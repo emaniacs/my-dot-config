@@ -147,4 +147,9 @@ alias tmux="TERM=screen-256color-bce EVENT_NOEPOLL=1 tmux"
 # tmux 2.0
 alias tmx="TERM=screen-256color-bce ~/git/tmux-code/tmux"
 
+export GOROOT=$HOME/go/go
+export GOPATH=$HOME/go/me
+export PATH=$PATH:$GOROOT/bin
+
 # vim:ft=sh
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
