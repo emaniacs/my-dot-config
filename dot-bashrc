@@ -151,5 +151,12 @@ export GOROOT=$HOME/go/go
 export GOPATH=$HOME/go/me
 export PATH=$PATH:$GOROOT/bin
 
-# vim:ft=sh
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+# error while opening neovim
+# https://github.com/neovim/neovim/issues/1876
+VIM=`vim --version|grep fall-back|awk '{print $4}'|sed 's/"//g'`
+alias nvim="VIM=$VIM nvim"
+
+# vim:ft=sh
