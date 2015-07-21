@@ -29,7 +29,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/matchit.zip'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'Wutzara/vim-materialtheme'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
