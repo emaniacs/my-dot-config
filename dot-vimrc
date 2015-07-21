@@ -52,6 +52,7 @@ set pastetoggle=<F9>
 set nocompatible
 filetype off
 set matchpairs+=<:>
+set relativenumber
 
 set tags+=.tags
 
