@@ -34,6 +34,7 @@ Plug 'pelodelfuego/vim-swoop'
 Plug 'Wutzara/vim-materialtheme'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
 Plug 'tommcdo/vim-exchange'
+Plug 'svermeulen/vim-easyclip'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
