@@ -21,7 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/snipMate'
+Plug 'SirVer/ultisnips'
 Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
@@ -35,6 +35,7 @@ Plug 'Wutzara/vim-materialtheme'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
 Plug 'tommcdo/vim-exchange'
 Plug 'svermeulen/vim-easyclip'
+Plug 'ervandew/supertab'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -49,6 +50,16 @@ set expandtab
 set pastetoggle=<F9>
 " }}}
 
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Misc SET{{{
 set nocompatible
 filetype off
