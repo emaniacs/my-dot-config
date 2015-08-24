@@ -474,5 +474,9 @@ noremap <A-b> :CtrlPBuffer<cr>
 
 " }}}
 
+" vim-go {{{
+let g:go_fmt_autosave = 0
+" }}}
+
 set pastetoggle=<f9>
 " vim:foldmethod=marker:foldlevel=0
