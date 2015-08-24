@@ -3,39 +3,40 @@
 " vim-plug {{{
 call plug#begin('~/.vim/bundle')
 " Plug 'Shougo/vimproc'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
+Plug 'Wutzara/vim-materialtheme'
 Plug 'emaniacs/open_file_under_cursor.vim'
+Plug 'ervandew/supertab'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'jlanzarotta/bufexplorer', {'on': 'BufExplorer'}
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug 'kien/ctrlp.vim'
 Plug 'kurkale6ka/vim-pairs'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
+Plug 'pelodelfuego/vim-swoop'
+Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
+Plug 'svermeulen/vim-easyclip'
+Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/YankRing.vim'
-Plug 'SirVer/ultisnips'
+Plug 'vim-scripts/matchit.zip'
 Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
-Plug 'rhysd/clever-f.vim'
-Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
-Plug 'sjl/gundo.vim'
-Plug 'vim-scripts/matchit.zip'
-Plug 'Valloric/YouCompleteMe'
-Plug 'pelodelfuego/vim-swoop'
-Plug 'Wutzara/vim-materialtheme'
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
-Plug 'tommcdo/vim-exchange'
-Plug 'svermeulen/vim-easyclip'
-Plug 'ervandew/supertab'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -47,7 +48,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set pastetoggle=<F9>
 " }}}
 
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
@@ -474,4 +474,5 @@ noremap <A-b> :CtrlPBuffer<cr>
 
 " }}}
 
+set pastetoggle=<f9>
 " vim:foldmethod=marker:foldlevel=0
