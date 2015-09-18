@@ -35,8 +35,10 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'whatyouhide/vim-gotham'
+Plug 'wakatime/vim-wakatime'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
+Plug 't9md/vim-choosewin'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -478,5 +480,10 @@ noremap <A-b> :CtrlPBuffer<cr>
 let g:go_fmt_autosave = 0
 " }}}
 
+let g:choosewin_overlay_enable = 1
 set pastetoggle=<f9>
+
+nmap - <Plug>(choosewin)
+
+
 " vim:foldmethod=marker:foldlevel=0

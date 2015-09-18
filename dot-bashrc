@@ -150,6 +150,7 @@ alias tmx="TERM=screen-256color-bce ~/git/tmux-code/tmux"
 export GOROOT=$HOME/go/go
 export GOPATH=$HOME/go/me
 export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$HOME/bin/go_appengine
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
