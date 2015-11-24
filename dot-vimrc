@@ -17,6 +17,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'kien/ctrlp.vim'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
+Plug 'nsf/gocode'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
@@ -25,6 +26,7 @@ Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'svermeulen/vim-easyclip'
 Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
+Plug 't9md/vim-choosewin'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
@@ -32,13 +34,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/matchit.zip'
-Plug 'whatyouhide/vim-gotham'
 Plug 'wakatime/vim-wakatime'
+Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
-Plug 't9md/vim-choosewin'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
