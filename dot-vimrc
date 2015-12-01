@@ -15,7 +15,6 @@ Plug 'jlanzarotta/bufexplorer', {'on': 'BufExplorer'}
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/vim-peekaboo'
-Plug 'kien/ctrlp.vim'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
 Plug 'nsf/gocode'
@@ -303,23 +302,6 @@ endfunction
 
 " }}}
 
-" ctrlp {{{
-if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " dont caching the result
-    let g:ctrlp_use_caching=0
-endif
-set wildignore+=*.so,*.swp,*.bak,*.swp,*/.git/*,*/node_modules/*
-let g:ctrlp_show_hidden = 1
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
-" }}}
-
 " lightline {{{
 let g:lightline = {
             \ 'colorscheme' : 'wew',
@@ -472,8 +454,8 @@ nmap <leader>cc :!mkdir -p %:p:h<cr>
 nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
 nnoremap <leader>F :echo expand('%:p')<cr>
 
-noremap <leader>j :CtrlP<cr>
-noremap <A-b> :CtrlPBuffer<cr>
+noremap <leader>j :FZF<cr>
+noremap <leader>J :FZF ~<cr>
 " map <leader>cc :CtrlPMixed<cr>
 " map <leader>cb :CtrlPBuffer<cr>
 " map <leader>ct :CtrlPTag<cr>
