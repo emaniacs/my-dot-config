@@ -217,29 +217,6 @@ end
 " }}}
 
 " Functions {{{
-function! PhpHelp()
-    let fname = expand("<cword>")
-    if strlen(fname) == 0
-        return
-    endif
-    let fullpath = $HOME."/git/PIV/doc/" . substitute(fname,"_", "-", "g") . ".txt"
-    if filereadable(fullpath)
-        call MiniOpen(fullpath)
-    else
-        echo "Help not exists. '".fullpath."'"
-    endif
-endfunction
-
-function! MiniOpen(f, ...)
-    if a:0 > 0 && a:1 == "t"
-        let command = "belowright sview"
-    else
-        let command = "belowright split"
-    endif
-
-    execute command a:f
-endfunction
-
 function! GetCWD()
     let dir = getcwd()
     if len(dir) > 47 || winwidth(0) < 100
@@ -412,8 +389,6 @@ map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 map <leader>m :b#<cr>
 map <leader>l :ls<cr>
-map <leader>b :call MiniOpen("~/buffer")<cr>
-map <leader>h :call PhpHelp()<cr>
 map <leader>q ZZ
 map <leader>, <c-w>w
 map <leader>gn :GitGutterNextHunk<cr>
