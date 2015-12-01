@@ -5,13 +5,9 @@ call plug#begin('~/.vim/bundle')
 " Plug 'Shougo/vimproc'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
-Plug 'Wutzara/vim-materialtheme'
 Plug 'emaniacs/open_file_under_cursor.vim'
 Plug 'ervandew/supertab'
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -25,10 +21,8 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'svermeulen/vim-easyclip'
-Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
 Plug 't9md/vim-choosewin'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -38,9 +32,19 @@ Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'wakatime/vim-wakatime'
-Plug 'whatyouhide/vim-gotham'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
+
+" language
+Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
+Plug 'fatih/vim-go', {'for': 'go'}
+
+" gui
+Plug 'itchyny/lightline.vim'
+Plug 'tomasr/molokai'
+Plug 'junegunn/goyo.vim'
+Plug 'Wutzara/vim-materialtheme'
+Plug 'whatyouhide/vim-gotham'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
