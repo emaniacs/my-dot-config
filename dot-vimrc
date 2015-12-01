@@ -309,7 +309,7 @@ let g:notes_directories = ['~/Notes']
 " }}}
 
 "Ag {{{
-nmap <silent> R :Ag "<cword>"<cr> 
+nmap <silent> <leader>a :Ag "<cword>"<cr> 
 "}}}
 
 " clever-f {{{
