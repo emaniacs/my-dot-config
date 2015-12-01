@@ -14,6 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'jlanzarotta/bufexplorer', {'on': 'BufExplorer'}
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
