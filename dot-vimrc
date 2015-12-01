@@ -138,6 +138,7 @@ set noswapfile
 
 au FileType python setl foldmethod=indent
 au FileType html setl foldmethod=indent
+au FileType lua setl foldmethod=indent
 
 " }}}
 
@@ -155,7 +156,8 @@ endif
 " Syntax highlighting
 syntax on
 
-set guifont=Ubuntu\ Mono\ 11
+" set guifont=Ubuntu\ Mono\ 11
+set guifont=Fira\ Mono\ 10
 set encoding=utf8
 set ffs=unix,dos,mac
 
@@ -173,7 +175,7 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=e
 else
-    colorscheme molokai
+    colorscheme onedark
 endif
 
 set cursorline
