@@ -11,7 +11,6 @@ Plug 'ervandew/supertab'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jlanzarotta/bufexplorer', {'on': 'BufExplorer'}
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
@@ -186,14 +185,6 @@ set laststatus=2
 " Session {{{
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
-" }}}
-
-" bufExplorer {{{
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-nmap <leader>o :BufExplorer<cr>
 " }}}
 
 " YankRing {{{
