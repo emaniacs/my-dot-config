@@ -12,7 +12,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kurkale6ka/vim-pairs'
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'      }
 Plug 'nsf/gocode'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'rhysd/clever-f.vim'
@@ -345,13 +344,9 @@ imap <A-Left> <ESC>:tabprevious<CR>
 map <A-Right> :tabnext<CR>
 imap <A-Right> <ESC>:tabnext<CR>
 
-nmap <F8> :TagbarToggle<cr>
-imap <F8> <ESC>:TagbarToggle<cr>
-
 map <F10> :NERDTreeToggle<CR>
 imap <F10> <ESC>:NERDTreeToggle<CR>
 map <S-F10> :NERDTree %<CR>
-imap <S-F10> <ESC>:TagbarToggle<CR>
 
 imap <S-Up> <ESC>:winc +<cr><esc>i
 map <S-Up> :winc +<cr>
