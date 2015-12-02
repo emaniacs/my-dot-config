@@ -421,7 +421,7 @@ nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
 nnoremap <leader>F :echo expand('%:p')<cr>
 
 noremap <leader>j :FZF<cr>
-noremap <leader>J :FZF ~<cr>
+noremap <leader>J :FZF ~
 " map <leader>cc :CtrlPMixed<cr>
 " map <leader>cb :CtrlPBuffer<cr>
 " map <leader>ct :CtrlPTag<cr>
