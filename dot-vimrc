@@ -142,6 +142,7 @@ set noswapfile
 au FileType python setl foldmethod=indent
 au FileType html setl foldmethod=indent
 au FileType lua setl foldmethod=indent
+au FileType vim setl foldmethod=indent
 
 " }}}
 
