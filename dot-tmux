@@ -1,4 +1,4 @@
-set-option -g prefix M-a
+if-shell "uname|grep -q Darwin" "set-option -g prefix C-a" "set-option -g prefix M-a"
 # 0 is too far from ` ;)
 set -g base-index 1
 
@@ -14,7 +14,7 @@ set -g history-limit 10000
 set -g mode-mouse on
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
-set -g mouse-select-window on
+# set -g mouse-select-window on
 
 setw -g mode-keys vi
 setw -g monitor-activity on
@@ -145,3 +145,9 @@ set -g message-command-fg black
 # Mode
 set -g mode-bg colour227
 set -g mode-fg colour235
+
+# tmux plugin
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+run '~/.tmux/plugins/tpm/tpm'
