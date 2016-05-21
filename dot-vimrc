@@ -138,10 +138,7 @@ au BufRead,BufNewFile *.jade setl expandtab
 set backupdir=~/.vim/tmp/backup
 set noswapfile
 
-au FileType python setl foldmethod=indent
-au FileType html setl foldmethod=indent
-au FileType lua setl foldmethod=indent
-au FileType vim setl foldmethod=indent
+au FileType python,jade,html,lua,vim setl foldmethod=indent
 
 " }}}
 
