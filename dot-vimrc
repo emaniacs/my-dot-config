@@ -377,6 +377,9 @@ nnoremap ; :
 nnoremap \ ,
 nnoremap R "_d
 
+" m used by easyclip
+nnoremap gm m
+
 "}}}
 
 " Leader shorcut {{{
