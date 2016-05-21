@@ -444,5 +444,8 @@ set pastetoggle=<f9>
 
 nmap - <Plug>(choosewin)
 
+" force backup
+set backup
+set writebackup
 
 " vim:foldmethod=marker:foldlevel=0
