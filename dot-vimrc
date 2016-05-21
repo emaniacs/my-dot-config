@@ -129,6 +129,7 @@ command W w !sudo tee % > /dev/null
 au BufRead,BufNewFile *.php set ft=php.html
 au BufRead,BufNewFile *.tpl set ft=php.html
 au BufRead,BufNewFile *.tag set ft=html
+au BufRead,BufNewFile *.pug set ft=jade
 
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
