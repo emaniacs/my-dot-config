@@ -443,6 +443,7 @@ let g:choosewin_overlay_enable = 1
 set pastetoggle=<f9>
 
 nmap - <Plug>(choosewin)
+nmap <f9> :setl paste! paste?<cr>
 
 " force backup
 set backup
