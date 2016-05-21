@@ -31,6 +31,9 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'wakatime/vim-wakatime'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
+Plug 'digitaltoad/vim-jade'
+Plug 'tommcdo/vim-lion'
+Plug 'diepm/vim-rest-console'
 
 " language
 Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
