@@ -140,7 +140,8 @@ au BufRead,BufNewFile *.jade,*.js,*.jsx setl softtabstop=2
 au BufRead,BufNewFile *.jade,*.js,*.jsx setl expandtab
 
 " backup and swap file
-set backupdir=~/.vim/tmp/backup
+set backupdir=~/.vim/tmp/backup,.
+set directory=~/.vim/tmp/backup,.
 set noswapfile
 
 au FileType python,jade,html,lua,vim setl foldmethod=indent
