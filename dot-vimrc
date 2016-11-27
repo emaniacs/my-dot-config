@@ -3,7 +3,11 @@
 " vim-plug {{{
 call plug#begin('~/.vim/bundle')
 " Plug 'Shougo/vimproc'
-Plug 'SirVer/ultisnips'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'romainl/Apprentice'
+
+"" tools
+" Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'emaniacs/open_file_under_cursor.vim'
 Plug 'ervandew/supertab'
@@ -12,7 +16,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kurkale6ka/vim-pairs'
-Plug 'nsf/gocode'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
@@ -27,26 +30,32 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vasconcelloslf/vim-interestingwords'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/matchit.zip'
+" Plug 'vim-scripts/YankRing.vim'
+" Plug 'vim-scripts/matchit.zip'
 Plug 'wakatime/vim-wakatime'
 Plug 'xolox/vim-misc', {'on': 'Note'}
 Plug 'xolox/vim-notes', {'on': 'Note'}
-Plug 'digitaltoad/vim-jade'
 Plug 'tommcdo/vim-lion'
 Plug 'diepm/vim-rest-console'
-
-" language
-Plug 'swekaj/php-foldexpr.vim', {'for': 'php'}
-Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'valloric/MatchTagAlways'
+Plug 'evidanary/grepg.vim'
+" Plug 'mpyatishev/vim-sqlformat'
+" Plug 'irrationalistic/vim-tasks'
+Plug 'samsonw/vim-task'
 
 " gui
-Plug 'itchyny/lightline.vim'
+Plug 'emaniacs/lightline.vim'
 Plug 'tomasr/molokai'
 Plug 'junegunn/goyo.vim'
 Plug 'Wutzara/vim-materialtheme'
 Plug 'whatyouhide/vim-gotham'
 Plug 'geoffharcourt/one-dark.vim'
+
+" language
+Plug 'elmcast/elm-vim', {'for': 'elm'}
+" Plug 'mxw/vim-jsx'
+Plug 'fatih/vim-go'
+Plug 'nsf/gocode'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -108,10 +117,12 @@ set backspace=eol,indent,start
 set list
 set listchars=tab:»·,trail:·,extends:>
 
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
+" show match tag
+set showmatch
+
+" show completion with tab on command mode
+set wildmenu
+
 
 " Use hard tabs for make files
 autocmd FileType make setlocal noexpandtab
@@ -130,6 +141,7 @@ au BufRead,BufNewFile *.php set ft=php.html
 au BufRead,BufNewFile *.tpl set ft=php.html
 au BufRead,BufNewFile *.tag set ft=html
 au BufRead,BufNewFile *.pug set ft=jade
+au BufRead,BufNewFile *.jade set ft=jade
 
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
@@ -139,12 +151,19 @@ au BufRead,BufNewFile *.jade,*.js,*.jsx setl shiftwidth=2
 au BufRead,BufNewFile *.jade,*.js,*.jsx setl softtabstop=2
 au BufRead,BufNewFile *.jade,*.js,*.jsx setl expandtab
 
+au BufNewFile,BufRead todo.txt,*.task,*.tasks setfiletype task
+au BufRead,BufNewFile todo.txt,*.task,*.tasks setl tabstop=2
+au BufRead,BufNewFile todo.txt,*.task,*.tasks setl shiftwidth=2
+au BufRead,BufNewFile todo.txt,*.task,*.tasks setl softtabstop=2
+au BufRead,BufNewFile todo.txt,*.task,*.tasks setl expandtab
+
+
 " backup and swap file
 set backupdir=~/.vim/tmp/backup,.
 set directory=~/.vim/tmp/backup,.
 set noswapfile
 
-au FileType python,jade,html,lua,vim setl foldmethod=indent
+au FileType python,jade,html,lua,vim,elm setl foldmethod=indent
 
 " }}}
 
@@ -215,11 +234,10 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " Syntastic {{{
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_html_checkers=['']
+let g:syntastic_javascript_checkers=['eslint']
+" let g:syntastic_javascript_eslint_exe = 'eslint --'
+" let g:syntastic_debug = 3
 
-" php checker
-if executable('/opt/php55/bin/php')
-    let g:syntastic_php_php_exec = '/opt/php57/bin/php'
-end
 " }}}
 
 " Functions {{{
@@ -326,9 +344,6 @@ map 0 ^
 nnoremap j gj
 nnoremap k gk
 
-" pagedown pageup
-nmap K <PageUp>
-nmap J <PageDown>
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -342,10 +357,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map <A-Left> :tabprevious<CR>
-imap <A-Left> <ESC>:tabprevious<CR>
-map <A-Right> :tabnext<CR>
-imap <A-Right> <ESC>:tabnext<CR>
 
 map <F10> :NERDTreeToggle<CR>
 imap <F10> <ESC>:NERDTreeToggle<CR>
@@ -366,6 +377,7 @@ map <T-Up> <C-w><Up>
 map <T-Down> <C-w><Down>
 map <T-q> <C-w>q
 
+" copy to clipboard
 map <A-x> "+x
 imap <A-x> <ESC>"+xi
 map <A-v> "+gP
@@ -373,11 +385,9 @@ imap <A-v> <ESC>"+gPi
 map <A-c> "+y
 imap <A-c> <ESC>"+yi
 
-inoremap <C-space> <esc>
 nnoremap ; :
 " nnoremap : ;
 nnoremap \ ,
-nnoremap R "_d
 
 " m used by easyclip
 nnoremap gm m
@@ -385,8 +395,8 @@ nnoremap gm m
 "}}}
 
 " Leader shorcut {{{
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 nmap <leader>w :w!<cr>
 map <leader>d :bdelete<cr>
@@ -438,6 +448,17 @@ noremap <leader>J :FZF ~
 " vim-go {{{
 let g:go_fmt_autosave = 0
 " }}}
+"
+" elm {{{
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:elm_format_autosave = 0
+let g:elm_syntastic_show_warnings = 1
+let g:ycm_semantic_triggers = {
+    \ 'elm' : ['.'],
+    \}
+" }}}
 
 let g:choosewin_overlay_enable = 1
 set pastetoggle=<f9>
@@ -449,4 +470,14 @@ nmap <f9> :setl paste! paste?<cr>
 set backup
 set writebackup
 
+let g:go_autodetect_gopath = 0
+
+let g:jsx_ext_required = 1
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'jade' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \}
 " vim:foldmethod=marker:foldlevel=0
