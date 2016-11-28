@@ -133,8 +133,6 @@ init_screen(){
     echo "[INFO] Removing temporary file '${tmp}'"
     rm "${tmp}"
 }
-# init zsh
-# init all
 
 main(){
     case $1 in
@@ -146,15 +144,10 @@ main(){
             init_tmux;;
         screen )
             init_screen;;
-        # bash )
-        #     init_bash;;
-        # zsh )
-        #     init_zsh;;
         all )
             init_vim
             init_tmux
-            init_bash
-            init_zsh
+            init_screen
             ;;
         * )
             echo "[ERROR] Invalid command $1"
