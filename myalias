@@ -1,31 +1,3 @@
-__git_ps(){
-    local worktree=$(git rev-parse --show-toplevel 2>/dev/null)
-    if test ! -d "$worktree" ; then
-        echo -e $(tput setaf 1)'no-git'$(tput setaf 9)
-    else
-        local branch=$(__git_branch)
-        if test -e $branch; then
-            branch="$(tput setaf 3)none$(tput setaf 9)"
-        else
-            branch="$(tput setaf 2)${branch}$(tput setaf 9)"
-        fi  
-
-        local status=$(__git_status)
-        if test $status; then
-            status=";$(tput setaf 5)${status}$(tput setaf 9)"
-        fi  
-
-        echo -e ' git:'${branch}${status}';'$(tput setaf 153)$worktree' '
-    fi  
-}
-__git_branch() {
-    git branch 2>/dev/null | grep \* | tr -d '* '
-}
-__git_status(){
-    git status --porcelain | awk '{print $1}' | tr -d '\n' | tr -s '[a-zA-Z0-9?]'
-}
-
-
 # create dir and cd into dir
 take() {
     dr=$1
@@ -62,13 +34,6 @@ alias fl='fdisk -l'
 alias nx='sudo /home/ardi/bin/nginx153/sbin/nginx'
 alias sp='sudo supervisorctl'
 alias enw='emacs --no-window'
-
-#sshfs -o follow_symlinks -o workaround=rename wew@192.168.9.129:/opt/lampp/htdocs/ /home/ardi/sshfs/wew@wahyu'
-
-ltunnel() {
-    port=3000
-    sudo ssh -L 80:localhost:${1-$port} $(whoami)@localhost
-}
 
 dimount () {
     local config_file=$HOME/.dimount
@@ -139,11 +104,5 @@ generate_ctags() {
 
     ctags -R -f .tags ${the_path}
 }
-
-# export GOROOT=$HOME/go/go
-# export GOPATH=$HOME/go/me
-# export PATH=$PATH:$GOROOT/bin
-# export PATH=$PATH:$HOME/bin/go_appengine
-# export PATH=$PATH:$GOPATH/bin
 
 # vim:ft=sh
