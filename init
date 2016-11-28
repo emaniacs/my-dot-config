@@ -108,16 +108,16 @@ init_tmux(){
 # init screen
 init_screen(){
     # check exist vimrc
-    sreenrc=$HOME/.screenrc
-    if test -e ${sreenrc} ; then
-        echo -n "[WARNING] ${sreenrc} exist, replace? (Y/q) "
+    screenrc=$HOME/.screenrc
+    if test -e ${screenrc} ; then
+        echo -n "[WARNING] ${screenrc} exist, replace? (Y/q) "
         read question
         if test "${question}" != "Y" ; then
             return 1
         fi
     fi
 
-    # download sreenrc and put to ~/.sreenrc
+    # download screenrc and put to ~/.sreenrc
     tmp=$(mktemp)
     echo "[INFO] Creating temporary file '${tmp}'"
 
@@ -125,10 +125,10 @@ init_screen(){
     download "${SCREENRC}" ${tmp}
 
     if test $? -eq 0 -a -e ${tmp}; then
-        echo "[INFO] Copying to ${sreenrc}"
-        cp -fv ${tmp} ${sreenrc}
+        echo "[INFO] Copying to ${screenrc}"
+        cp -fv ${tmp} ${screenrc}
     else
-        echo "[WARNING] Failed while download sreenrc"
+        echo "[WARNING] Failed while download screenrc"
     fi
 
     echo "[INFO] Removing temporary file '${tmp}'"
