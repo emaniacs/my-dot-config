@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+
+VIMRC="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-vimrc"
+VIMRC_SIMPLE="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-vimrc-simple"
+TMUX_CONF="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-tmux"
+SCREENRC="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-screenrc"
+
+download(){
+    # get file from server
+    wget=$(which wget)
+    if test $? -eq 0; then
+        wget -O "$2" "$1" >/dev/null 2>&1
+        return 0
+    fi
+
+    # use curl
+    curl=$(which curl)
+    if test $? -eq 0; then
+        curl -o "$2" "$1" >/dev/null 2>&1
+        return 0
+    fi
+
+    echo "[ERROR] No download application."
+    return 1
+}
+
+# init vim
+init_vim(){
+    simple=${1:-'x'}
+    # check vimrc to be download
+    if test "${simple}" = "simple"; then
+        echo "[INFO] Use vim simple version."
+        VIMRC_FILE=${VIMRC_SIMPLE}
+    else
+        VIMRC_FILE=${VIMRC}
+    fi
+
+    # check exist vimrc
+    vimrc=$HOME/.vimrc
+    if test -e ${vimrc} ; then
+        echo -n "[WARNING] ${vimrc} exist, replace? (Y/q) "
+        read question
+        if test "${question}" != "Y" ; then
+            return 1
+        fi
+    fi
+
+    # create backup and swap directory
+    echo "[INFO] Creating backup and swap directory"
+    mkdir -pv "$HOME/.vim/tmp/backup"
+    mkdir -pv "$HOME/.vim/tmp/yank"
+
+    # download vimrc and put to ~/.vimrc
+    tmp=$(mktemp)
+    echo "[INFO] Creating temporary file '${tmp}'"
+
+    echo "[INFO] Download vimrc."
+    download "${VIMRC_FILE}" ${tmp}
+
+    if test $? -eq 0 -a -e ${tmp}; then
+        echo "[INFO] Copying to ${vimrc}"
+        cp -fv ${tmp} ${vimrc}
+
+        if test "${simple}" != "simple"; then
+            # do pluginstall and exit
+            echo "[INFO] Install vim plugin"
+            vim -c ':PlugInstall | :call confirm("Press any key to exit") | :qa!'
+        fi
+    else
+        echo "[WARNING] Failed while download vimrc"
+    fi
+
+    echo "[INFO] Removing temporary file '${tmp}'"
+    rm "${tmp}"
+}
+
+# init tmux
+init_tmux(){
+    # check exist vimrc
+    tmuxconf=$HOME/.tmux.conf
+    if test -e ${tmuxconf} ; then
+        echo -n "[WARNING] ${tmuxconf} exist, replace? (Y/q) "
+        read question
+        if test "${question}" != "Y" ; then
+            return 1
+        fi
+    fi
+
+    # download tmuxconf and put to ~/.tmuxconf
+    tmp=$(mktemp)
+    echo "[INFO] Creating temporary file '${tmp}'"
+
+    echo "[INFO] Download tmux.conf."
+    download "${TMUX_CONF}" ${tmp}
+
+    if test $? -eq 0 -a -e ${tmp}; then
+        echo "[INFO] Copying to ${tmuxconf}"
+        cp -fv ${tmp} ${tmuxconf}
+    else
+        echo "[WARNING] Failed while download tmuxconf"
+    fi
+
+    echo "[INFO] Removing temporary file '${tmp}'"
+    rm "${tmp}"
+}
+
+# init screen
+init_screen(){
+    # check exist vimrc
+    sreenrc=$HOME/.screenrc
+    if test -e ${sreenrc} ; then
+        echo -n "[WARNING] ${sreenrc} exist, replace? (Y/q) "
+        read question
+        if test "${question}" != "Y" ; then
+            return 1
+        fi
+    fi
+
+    # download sreenrc and put to ~/.sreenrc
+    tmp=$(mktemp)
+    echo "[INFO] Creating temporary file '${tmp}'"
+
+    echo "[INFO] Download screenrc."
+    download "${SCREENRC}" ${tmp}
+
+    if test $? -eq 0 -a -e ${tmp}; then
+        echo "[INFO] Copying to ${sreenrc}"
+        cp -fv ${tmp} ${sreenrc}
+    else
+        echo "[WARNING] Failed while download sreenrc"
+    fi
+
+    echo "[INFO] Removing temporary file '${tmp}'"
+    rm "${tmp}"
+}
+# init zsh
+# init all
+
+main(){
+    case $1 in
+        vim-simple )
+            init_vim "simple";;
+        vim )
+            init_vim;;
+        tmux )
+            init_tmux;;
+        screen )
+            init_screen;;
+        # bash )
+        #     init_bash;;
+        # zsh )
+        #     init_zsh;;
+        all )
+            init_vim
+            init_tmux
+            init_bash
+            init_zsh
+            ;;
+        * )
+            echo "[ERROR] Invalid command $1"
+    esac
+}
+
+main $@
