@@ -4,6 +4,7 @@ VIMRC="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-vimrc
 VIMRC_SIMPLE="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-vimrc-simple"
 TMUX_CONF="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-tmux"
 SCREENRC="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/dot-screenrc"
+MYALIAS="https://raw.githubusercontent.com/emaniacs/my-dot-config/master/myalias"
 
 download(){
     # get file from server
@@ -134,6 +135,36 @@ init_screen(){
     rm "${tmp}"
 }
 
+# init alias
+init_myalias(){
+    # check exist vimrc
+    myalias=$HOME/.myalias
+    if test -e ${myalias} ; then
+        echo -n "[WARNING] ${myalias} exist, replace? (Y/q) "
+        read question
+        if test "${question}" != "Y" ; then
+            return 1
+        fi
+    fi
+
+    # download myalias and put to ~/.myalias
+    tmp=$(mktemp)
+    echo "[INFO] Creating temporary file '${tmp}'"
+
+    echo "[INFO] Download myalias."
+    download "${SCREENRC}" ${tmp}
+
+    if test $? -eq 0 -a -e ${tmp}; then
+        echo "[INFO] Copying to ${myalias}"
+        cp -fv ${tmp} ${myalias}
+    else
+        echo "[WARNING] Failed while download myalias"
+    fi
+
+    echo "[INFO] Removing temporary file '${tmp}'"
+    rm "${tmp}"
+}
+
 main(){
     case $1 in
         vim-simple )
@@ -144,6 +175,8 @@ main(){
             init_tmux;;
         screen )
             init_screen;;
+        myalias )
+            init_myalias;;
         all )
             init_vim
             init_tmux
