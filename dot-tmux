@@ -1,4 +1,6 @@
-if-shell "uname|grep -q Darwin" "set-option -g prefix C-a" "set-option -g prefix M-a"
+# use Ctrl-a as prefix
+set-option -g prefix C-a
+
 # 0 is too far from ` ;)
 set -g base-index 1
 
@@ -7,19 +9,19 @@ set-window-option -g automatic-rename on
 set-window-option -g xterm-keys on
 set-option -g set-titles on
 
-set -g default-terminal "screen-256color"
+# set -g default-terminal "screen-256color"
 set -g status-keys vi
 set -g history-limit 10000
 
-set -g mouse on
+# set -g mouse on
 
 setw -g mode-keys vi
 setw -g monitor-activity on
 
-# bind-key J resize-pane -D 5
-# bind-key K resize-pane -U 5
-# bind-key H resize-pane -L 5
-# bind-key L resize-pane -R 5
+bind-key J resize-pane -D 5
+bind-key K resize-pane -U 5
+bind-key H resize-pane -L 5
+bind-key L resize-pane -R 5
 
 bind-key m last-window
 
@@ -38,32 +40,11 @@ bind c new-window -c "#{pane_current_path}"
 bind | split-window -h -c "#{pane_current_path}"
 bind h split-window -c "#{pane_current_path}"
 
-
-# # Use Alt-vim keys without prefix key to switch panes
-bind -n M-h select-pane -L
-bind -n M-j select-pane -D 
-bind -n M-k select-pane -U
-bind -n M-l select-pane -R
-
-# Use Alt-arrow keys without prefix key to switch panes
-# bind -n M-Left select-pane -L
-# bind -n M-Right select-pane -R
-# bind -n M-Up select-pane -U
-# bind -n M-Down select-pane -D
-
-# Shift arrow to switch windows
-bind -n M-i previous-window
-bind -n M-o next-window
-
 # No delay for escape key press
 set -sg escape-time 0
 
-# Reload tmux config
-bind r source-file ~/.tmux.conf
-
 # enable copy text
-#set -g default-command "reattach-to-user-namespace -l zsh"
-#
+# set -g default-command "reattach-to-user-namespace -l zsh"
 
 # http://unix.stackexchange.com/questions/15715/getting-tmux-to-copy-a-buffer-to-the-clipboard
 #
@@ -72,8 +53,6 @@ bind r source-file ~/.tmux.conf
 # move tmux copy buffer into x clipboard
 # bind -n M-y run-shell "tmux save-buffer - | xclip -selection clipboard"
 # bind-key vi-copy y copy-pipe 'xclip -selection clipboard >/dev/null'
-
-run-shell ~/git/tmux-resurrect/resurrect.tmux
 
 # THEME
 # based on github.com/jimeh/tmux-themepack/powerline/block/yellow.tmuxtheme"
@@ -116,35 +95,35 @@ set -g window-status-separator "|"
 # set -g status-justify centre
 
 # Pane border
-set -g pane-border-bg default
-set -g pane-border-fg colour238
+# set -g pane-border-bg default
+# set -g pane-border-fg colour238
 
 # Active pane border
-set -g pane-active-border-bg default
-set -g pane-active-border-fg colour227
+# set -g pane-active-border-bg default
+# set -g pane-active-border-fg colour227
 
 # Pane number indicator
-set -g display-panes-colour colour233
-set -g display-panes-active-colour colour245
+# set -g display-panes-colour colour233
+# set -g display-panes-active-colour colour245
 
 # Clock mode
-set -g clock-mode-colour colour227
-set -g clock-mode-style 24
+# set -g clock-mode-colour colour227
+# set -g clock-mode-style 24
 
 # Message
-set -g message-bg colour227
-set -g message-fg black
+# set -g message-bg colour227
+# set -g message-fg black
 
 # Command message
-set -g message-command-bg colour233
-set -g message-command-fg black
+# set -g message-command-bg colour233
+# set -g message-command-fg black
 
 # Mode
-set -g mode-bg colour227
-set -g mode-fg colour235
+# set -g mode-bg colour227
+# set -g mode-fg colour235
 
 # tmux plugin
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-run '~/.tmux/plugins/tpm/tpm'
+# set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'tmux-plugins/tmux-sensible'
+# set -g @plugin 'tmux-plugins/tmux-resurrect'
+# run '~/.tmux/plugins/tpm/tpm'
