@@ -94,11 +94,19 @@ set lazyredraw
 " set cursorline
 
 " backup file
+" silent call mkdir($HOME.'/.vim/tmp/backup', 'p')
+" silent call mkdir($HOME.'/.vim/tmp/backup', 'p')
+if !isdirectory($HOME.'/.vim/tmp/backup')
+    silent call mkdir($HOME.'/.vim/tmp/backup', 'p')
+endif
+if !isdirectory($HOME.'/.vim/tmp/yank')
+    silent call mkdir($HOME.'/.vim/tmp/yank', 'p')
+endif
+
 set backup
 set writebackup
 set backupdir=~/.vim/tmp/backup,.
 set directory=~/.vim/tmp/backup,.
-set noswapfile
 let g:yankring_history_dir = '~/.vim/tmp/yank'
 
 " history to be remember
