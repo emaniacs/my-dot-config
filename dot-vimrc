@@ -56,7 +56,7 @@ Plug 'geoffharcourt/one-dark.vim'
 " language
 Plug 'elmcast/elm-vim', {'for': 'elm'}
 " Plug 'mxw/vim-jsx'
-Plug 'fatih/vim-go' , {'for', 'go'}
+Plug 'fatih/vim-go' , {'for': 'go'}
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
