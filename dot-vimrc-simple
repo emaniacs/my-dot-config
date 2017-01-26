@@ -35,6 +35,8 @@ set statusline+=%= " righ align remainder
 set statusline+=0x%-8B " character value
 set statusline+=%-14(%l,%c%V%) " line, character
 set statusline+=%<%P " buffer number
+hi StatusLine ctermbg=white ctermfg=black
+hi StatusLineNC ctermbg=white ctermfg=black
 
 
 " show line number
