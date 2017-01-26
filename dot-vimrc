@@ -15,6 +15,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-easy-align'
 Plug 'kurkale6ka/vim-pairs'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'rhysd/clever-f.vim'
@@ -42,9 +43,11 @@ Plug 'evidanary/grepg.vim'
 " Plug 'mpyatishev/vim-sqlformat'
 " Plug 'irrationalistic/vim-tasks'
 Plug 'samsonw/vim-task'
+Plug 'AndrewRadev/multichange.vim'
 
 " gui
 Plug 'emaniacs/lightline.vim'
+Plug 'itchyny/vim-cursorword'
 Plug 'tomasr/molokai'
 Plug 'junegunn/goyo.vim'
 Plug 'Wutzara/vim-materialtheme'
@@ -79,6 +82,7 @@ let g:SuperTabCrMapping                = 0
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 " Misc SET{{{
 set nocompatible
 filetype off
@@ -458,6 +462,7 @@ let g:elm_syntastic_show_warnings = 1
 let g:ycm_semantic_triggers = {
     \ 'elm' : ['.'],
     \}
+au FileType elm map K :ElmShowDocs<cr>
 " }}}
 
 let g:choosewin_overlay_enable = 1
