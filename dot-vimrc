@@ -17,7 +17,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-easy-align'
 Plug 'kurkale6ka/vim-pairs'
-Plug 'pelodelfuego/vim-swoop'
 Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -58,7 +57,6 @@ Plug 'geoffharcourt/one-dark.vim'
 Plug 'elmcast/elm-vim', {'for': 'elm'}
 " Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go' , {'for', 'go'}
-Plug 'nsf/gocode' , {'for', 'go'}
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
