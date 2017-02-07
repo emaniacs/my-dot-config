@@ -30,6 +30,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'terryma/vim-expand-region'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-scripts/matchit.zip'
 " Plug 'tommcdo/vim-lion'
@@ -479,4 +480,9 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}}
 "
+" {{{ vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0
