@@ -32,29 +32,21 @@ Plug 'tpope/vim-surround'
 Plug 'vasconcelloslf/vim-interestingwords'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-scripts/matchit.zip'
-Plug 'wakatime/vim-wakatime'
-Plug 'xolox/vim-misc', {'on': 'Note'}
-Plug 'xolox/vim-notes', {'on': 'Note'}
 Plug 'tommcdo/vim-lion'
 Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
 Plug 'evidanary/grepg.vim'
-" Plug 'mpyatishev/vim-sqlformat'
-" Plug 'irrationalistic/vim-tasks'
-Plug 'samsonw/vim-task'
 Plug 'AndrewRadev/multichange.vim'
 
 " gui
 Plug 'emaniacs/lightline.vim'
 Plug 'itchyny/vim-cursorword'
-Plug 'tomasr/molokai'
 Plug 'junegunn/goyo.vim'
-Plug 'Wutzara/vim-materialtheme'
 Plug 'whatyouhide/vim-gotham'
 Plug 'geoffharcourt/one-dark.vim'
 
 " language
-Plug 'elmcast/elm-vim', {'for': 'elm'}
+Plug 'elmcast/elm-vim'
 " Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go' , {'for': 'go'}
 
@@ -325,10 +317,6 @@ let g:lightline = {
             \ },
             \ 'subseparator': { 'left': '|', 'right': '|' }
             \ }
-" }}}
-
-" Notes {{{
-let g:notes_directories = ['~/Notes']
 " }}}
 
 "Ag {{{
