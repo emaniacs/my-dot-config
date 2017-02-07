@@ -32,7 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'vasconcelloslf/vim-interestingwords'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-scripts/matchit.zip'
-Plug 'tommcdo/vim-lion'
+" Plug 'tommcdo/vim-lion'
 Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
 Plug 'evidanary/grepg.vim'
@@ -471,4 +471,12 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \}
+
+" {{{ Easy align
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}}
+"
 " vim:foldmethod=marker:foldlevel=0
