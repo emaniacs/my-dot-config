@@ -50,6 +50,7 @@ Plug 'geoffharcourt/one-dark.vim'
 Plug 'elmcast/elm-vim'
 " Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go' , {'for': 'go'}
+Plug 'elixir-lang/vim-elixir'
 
 " Plug 'Valloric/YouCompleteMe'
 call plug#end()
@@ -75,6 +76,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Misc SET{{{
+
 set nocompatible
 filetype off
 set matchpairs+=<:>
@@ -86,6 +88,7 @@ set tags+=.tags
 set noautochdir
 
 set history=700
+
 set hidden
 
 " Enable line numbers
@@ -106,7 +109,7 @@ set comments=sr:/*,mb:*,ex:*/
 set formatoptions+=r
 set foldmethod=marker
 set foldmarker={,}
-set foldlevelstart=10
+" set foldlevelstart=10
 " fix error on backspace
 set backspace=eol,indent,start
 set list
