@@ -45,6 +45,7 @@ Plug 'itchyny/vim-cursorword'
 Plug 'junegunn/goyo.vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'geoffharcourt/one-dark.vim'
+Plug 'ajh17/Spacegray.vim'
 
 " language
 Plug 'elmcast/elm-vim'
@@ -192,14 +193,8 @@ set guioptions-=l
 set guioptions-=L
 
 set t_Co=256
-if has("gui_running")
-    set background=dark
-    colorscheme molokai
-    set guioptions-=T
-    set guioptions-=e
-else
-    colorscheme onedark
-endif
+" colorscheme onedark
+colorscheme spacegray
 
 set cursorline
 set laststatus=2
