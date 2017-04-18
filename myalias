@@ -27,6 +27,7 @@ alias gith='git log --all --graph --decorate --oneline --abbrev-commit'
 alias gitb='git branch'
 alias gpl='git pull'
 alias gita='git add $*'
+alias gpom='git pull origin master'
 
 # other alias
 alias d='dmesg|tail'
