@@ -423,11 +423,11 @@ nmap <leader>cc :!mkdir -p %:p:h<cr>
 nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
 nnoremap <leader>F :echo expand('%:p')<cr>
 
-noremap <leader>fj :FZF<cr>
-noremap <leader>fb :Buffers<cr>
-noremap <leader>fw :Windows<cr>
-noremap <leader>fh :History<cr>
-noremap <leader>fl :History<cr>
+noremap <leader>jj :FZF<cr>
+noremap <leader>jk :Buffers<cr>
+noremap <leader>jw :Windows<cr>
+noremap <leader>jl :History<cr>
+noremap <leader>jh :History<cr>
 " map <leader>cc :CtrlPMixed<cr>
 " map <leader>cb :CtrlPBuffer<cr>
 " map <leader>ct :CtrlPTag<cr>
