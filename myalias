@@ -1,3 +1,31 @@
+__git_ps(){
+    local worktree=$(git rev-parse --show-toplevel 2>/dev/null)
+    if test ! -d "$worktree" ; then
+        echo -e $(tput setaf 1)'no-git'$(tput setaf 9)
+    else
+        local branch=$(__git_branch)
+        if test -e $branch; then
+            branch="$(tput setaf 3)none$(tput setaf 9)"
+        else
+            branch="$(tput setaf 2)${branch}$(tput setaf 9)"
+        fi  
+
+        local status=$(__git_status)
+        if test $status; then
+            status=";$(tput setaf 5)${status}$(tput setaf 9)"
+        fi  
+
+        echo -e ' git:'${branch}${status}';'$(tput setaf 153)$worktree' '
+    fi  
+}
+__git_branch() {
+    git branch 2>/dev/null | grep \* | tr -d '* '
+}
+__git_status(){
+    git status --porcelain | awk '{print $1}' | tr -d '\n' | tr -s '[a-zA-Z0-9?]'
+}
+
+
 # create dir and cd into dir
 take() {
     dr=$1
@@ -27,14 +55,19 @@ alias gith='git log --all --graph --decorate --oneline --abbrev-commit'
 alias gitb='git branch'
 alias gpl='git pull'
 alias gita='git add $*'
-alias gpom='git pull origin master'
 
 # other alias
 alias d='dmesg|tail'
 alias fl='fdisk -l'
-alias nx='sudo /home/ardi/bin/nginx153/sbin/nginx'
 alias sp='sudo supervisorctl'
 alias enw='emacs --no-window'
+
+#sshfs -o follow_symlinks -o workaround=rename wew@192.168.9.129:/opt/lampp/htdocs/ /home/ardi/sshfs/wew@wahyu'
+
+ltunnel() {
+    port=3000
+    sudo ssh -L 80:localhost:${1-$port} $(whoami)@localhost
+}
 
 dimount () {
     local config_file=$HOME/.dimount
@@ -106,4 +139,39 @@ generate_ctags() {
     ctags -R -f .tags ${the_path}
 }
 
+proxr(){
+    local action=${1-"status"}
+    case "${action}" in
+        set|s)
+            export http_proxy=socks5://127.0.0.1:9050 https_proxy=socks5://127.0.0.1:9050
+            ;;
+        unset|u)
+            export http_proxy= https_proxy=
+            ;;
+        *)
+            echo "http_proxy  -> ${http_proxy}"
+            echo "https_proxy -> ${https_proxy}"
+            ;;
+    esac
+}
+
+# export GOROOT=$HOME/go/go
+# export GOPATH=$HOME/go/me
+# export PATH=$PATH:$GOROOT/bin
+# export PATH=$PATH:$HOME/bin/go_appengine
+# export PATH=$PATH:$GOPATH/bin
+
+export GOPATH=$HOME/golang
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/golang/bin
+
+alias gpom='git push origin master'
+alias glive='git checkout live && git merge master && git push origin live && git checkout master'
+
+alias vi="/usr/local/bin/vim"
+
+alias t='todo.sh'
+
+export PATH=$PATH:/nix/store/h6fyfrhphdws4fdmdgpkrlxy4b66kmdv-nodejs-6.1.0/bin
 # vim:ft=sh
