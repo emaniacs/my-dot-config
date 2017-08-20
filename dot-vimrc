@@ -42,10 +42,7 @@ Plug 'AndrewRadev/multichange.vim'
 " gui
 Plug 'emaniacs/lightline.vim'
 Plug 'itchyny/vim-cursorword'
-Plug 'junegunn/goyo.vim'
-Plug 'whatyouhide/vim-gotham'
-Plug 'geoffharcourt/one-dark.vim'
-Plug 'ajh17/Spacegray.vim'
+Plug 'trevordmiller/nova-vim'
 
 " language
 Plug 'elmcast/elm-vim'
@@ -195,10 +192,10 @@ set guioptions-=l
 set guioptions-=L
 
 set t_Co=256
-" colorscheme onedark
-colorscheme spacegray
+colorscheme nova
 
-set cursorline
+" set cursorline
+" hi CursorLine guibg=Grey40
 set laststatus=2
 " }}}
 
