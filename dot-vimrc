@@ -407,6 +407,15 @@ map <leader>go :Git checkout %
 map <leader>gl :Git log --pretty=format:"\%h\%x09\%an\%x09\%ad\%x09\%s" -20 <cr>
 map <leader>gL :Git log --pretty=format:"\%h\%x09\%an\%x09\%ad\%x09\%s"
 
+map <leader>ek :ElmMake %
+map <leader>em :ElmMakeMain<cr>
+map <leader>et :ElmTest %
+map <leader>er :ElmRepl<cr>
+map <leader>ee :ElmErrorDetail<cr>
+map <leader>es :ElmShowDocs<cr>
+map <leader>eb :ElmBrowseDocs<cr>
+map <leader>ef :ElmFormat<cr>
+
 " tab control
 nmap <leader>. :tabnext<cr>
 nmap <leader>/ :tabprevious<cr>
