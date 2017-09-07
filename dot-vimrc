@@ -6,6 +6,12 @@ call plug#begin('~/.vim/bundle')
 " Plug 'sheerun/vim-polyglot'
 " Plug 'romainl/Apprentice'
 
+" gui
+Plug 'emaniacs/lightline.vim'
+Plug 'itchyny/vim-cursorword'
+Plug 'trevordmiller/nova-vim'
+Plug 'vasconcelloslf/vim-interestingwords'
+
 "" tools
 " Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
@@ -29,7 +35,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'terryma/vim-expand-region'
 " Plug 'vim-scripts/YankRing.vim'
 " Plug 'vim-scripts/matchit.zip'
@@ -38,11 +43,6 @@ Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
 Plug 'evidanary/grepg.vim'
 Plug 'AndrewRadev/multichange.vim'
-
-" gui
-Plug 'emaniacs/lightline.vim'
-Plug 'itchyny/vim-cursorword'
-Plug 'trevordmiller/nova-vim'
 
 " language
 Plug 'elmcast/elm-vim'
