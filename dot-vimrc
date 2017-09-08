@@ -10,7 +10,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'emaniacs/lightline.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'trevordmiller/nova-vim'
-Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'lfv89/vim-interestingwords'
 
 "" tools
 " Plug 'SirVer/ultisnips'
