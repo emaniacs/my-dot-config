@@ -2,9 +2,6 @@
 
 " vim-plug {{{
 call plug#begin('~/.vim/bundle')
-" Plug 'Shougo/vimproc'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'romainl/Apprentice'
 
 " gui
 Plug 'emaniacs/lightline.vim'
@@ -13,7 +10,6 @@ Plug 'trevordmiller/nova-vim'
 Plug 'lfv89/vim-interestingwords'
 
 "" tools
-" Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'emaniacs/open_file_under_cursor.vim'
 Plug 'ervandew/supertab'
@@ -36,9 +32,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-expand-region'
-" Plug 'vim-scripts/YankRing.vim'
-" Plug 'vim-scripts/matchit.zip'
-" Plug 'tommcdo/vim-lion'
 Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
 Plug 'evidanary/grepg.vim'
@@ -46,12 +39,10 @@ Plug 'AndrewRadev/multichange.vim'
 
 " language
 Plug 'elmcast/elm-vim'
-" Plug 'mxw/vim-jsx'
 Plug 'fatih/vim-go' , {'for': 'go'}
 Plug 'elixir-lang/vim-elixir'
 Plug 'KeyboardFire/vim-minisnip'
 
-" Plug 'Valloric/YouCompleteMe'
 call plug#end()
 " }}}
 
