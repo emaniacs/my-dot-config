@@ -36,6 +36,7 @@ Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
 Plug 'evidanary/grepg.vim'
 Plug 'AndrewRadev/multichange.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " language
 Plug 'elmcast/elm-vim'
