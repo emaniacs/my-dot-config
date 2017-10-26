@@ -22,7 +22,8 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'svermeulen/vim-easyclip'
 Plug 't9md/vim-choosewin'
 Plug 'terryma/vim-multiple-cursors'
@@ -215,15 +216,6 @@ let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
 " }}}
 
-" Syntastic {{{
-let g:syntastic_python_checkers=['pyflakes']
-let g:syntastic_html_checkers=['']
-let g:syntastic_javascript_checkers=['eslint']
-" let g:syntastic_javascript_eslint_exe = 'eslint --'
-" let g:syntastic_debug = 3
-
-" }}}
-
 " Functions {{{
 function! GetCWD()
     let dir = getcwd()
@@ -300,14 +292,56 @@ let g:lightline = {
             \   'mdf': 'MyModified',
             \ },
             \ 'component_expand': {
-            \   'syntastic': 'SyntasticStatuslineFlag',
+            \   'linter_warnings': 'LightlineLinterWarnings',
+            \   'linter_errors': 'LightlineLinterErrors',
+            \   'linter_ok': 'LightlineLinterOK'
             \ },
             \ 'component_type': {
-            \   'syntastic': 'error',
+            \   'readonly': 'error',
+            \   'linter_warnings': 'warning',
+            \   'linter_errors': 'error'
             \ },
             \ 'subseparator': { 'left': '|', 'right': '|' }
             \ }
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+autocmd User ALELint call s:MaybeUpdateLightline()
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
 " }}}
+"
+"Ale {{{
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_sign_warning = 'ǃ'
+let g:ale_sign_error = '×'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"}}}
 
 "Ag {{{
 nmap <silent> <leader>a :Ag "<cword>"<cr> 
@@ -423,6 +457,7 @@ nnoremap <leader>F :echo expand('%:p')<cr>
 
 noremap <leader>jj :FZF<cr>
 noremap <leader>jk :Buffers<cr>
+noremap <leader>jt :Tags 
 noremap <leader>jw :Windows<cr>
 noremap <leader>jl :History<cr>
 noremap <leader>jh :History<cr>
@@ -484,4 +519,4 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 let g:interestingWordsRandomiseColors = 1
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker
