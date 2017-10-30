@@ -25,7 +25,6 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'svermeulen/vim-easyclip'
-Plug 't9md/vim-choosewin'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -485,10 +484,8 @@ let g:ycm_semantic_triggers = {
 au FileType elm map K :ElmShowDocs<cr>
 " }}}
 
-let g:choosewin_overlay_enable = 1
 set pastetoggle=<f9>
 
-nmap - <Plug>(choosewin)
 nmap <f9> :setl paste! paste?<cr>
 
 " force backup
