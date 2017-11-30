@@ -8,6 +8,7 @@ Plug 'emaniacs/lightline.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'trevordmiller/nova-vim'
 Plug 'lfv89/vim-interestingwords'
+Plug 'nightsense/strawberry'
 
 "" tools
 Plug 'Valloric/YouCompleteMe'
@@ -44,6 +45,7 @@ Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go' , {'for': 'go'}
 Plug 'elixir-lang/vim-elixir'
 Plug 'KeyboardFire/vim-minisnip'
+Plug 'Badacadabra/vim-archery'
 
 call plug#end()
 " }}}
@@ -273,7 +275,7 @@ endfunction
 
 " lightline {{{
 let g:lightline = {
-            \ 'colorscheme' : 'wew',
+            \ 'colorscheme': 'archery',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ], [ 'gitb'], ['ro', 'mdf'], ['workingdir','filename' ]],
             \   'right': [ 
