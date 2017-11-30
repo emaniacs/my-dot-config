@@ -12,6 +12,6 @@
 .*
 
 # directory
-public/
+# public/
 tmp/
 dist/
