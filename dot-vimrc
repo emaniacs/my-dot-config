@@ -9,6 +9,7 @@ Plug 'itchyny/vim-cursorword'
 Plug 'trevordmiller/nova-vim'
 Plug 'lfv89/vim-interestingwords'
 Plug 'nightsense/strawberry'
+Plug 'vim-scripts/mayansmoke'
 
 "" tools
 Plug 'Valloric/YouCompleteMe'
@@ -26,7 +27,8 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'svermeulen/vim-easyclip'
-Plug 'terryma/vim-multiple-cursors'
+"" this plugin replace c-i
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -36,8 +38,6 @@ Plug 'tpope/vim-repeat'
 Plug 'terryma/vim-expand-region'
 Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
-Plug 'evidanary/grepg.vim'
-Plug 'AndrewRadev/multichange.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " language
