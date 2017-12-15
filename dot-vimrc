@@ -408,6 +408,11 @@ nnoremap \ ,
 " m used by easyclip
 nnoremap gm m
 
+" search and centering the page
+" from mastering vim
+nnoremap n nzz
+nnoremap N Nzz
+
 "}}}
 
 " Leader shorcut {{{
@@ -485,6 +490,16 @@ let g:ycm_semantic_triggers = {
     \}
 au FileType elm map K :ElmShowDocs<cr>
 " }}}
+"
+" Interestingword {{{
+" disabled default mapping
+" Because i just need to show interesting word
+let g:interestingWordsDefaultMappings = 1
+nnoremap <Insert> <Plug>InterestingWords
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+"}}}
 
 set pastetoggle=<f9>
 
