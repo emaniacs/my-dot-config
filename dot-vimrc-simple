@@ -41,7 +41,7 @@ hi StatusLineNC ctermbg=white ctermfg=black
 
 " show line number
 set ruler
-" set number
+set number
 
 " display incomplete commands
 set showcmd
@@ -111,3 +111,7 @@ let g:yankring_history_dir = '~/.vim/tmp/yank'
 
 " history to be remember
 set history=700
+
+" simple mapping
+nnoremap n nzz
+nnoremap N Nzz
