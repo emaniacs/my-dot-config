@@ -12,7 +12,8 @@ Plug 'nightsense/strawberry'
 Plug 'vim-scripts/mayansmoke'
 
 "" tools
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'maralla/completor.vim'
 Plug 'emaniacs/open_file_under_cursor.vim'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
@@ -24,9 +25,9 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'svermeulen/vim-easyclip'
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 "" this plugin replace c-i
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -44,7 +45,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go' , {'for': 'go'}
 Plug 'elixir-lang/vim-elixir'
-Plug 'KeyboardFire/vim-minisnip'
 Plug 'Badacadabra/vim-archery'
 
 call plug#end()
@@ -59,16 +59,16 @@ set expandtab
 " }}}
 
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+" let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
 let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
-let g:minisnip_trigger = '<C-e>'
+" let g:minisnip_trigger = '<C-e>'
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Misc SET{{{
 
@@ -485,9 +485,9 @@ let g:syntastic_auto_loc_list = 1
 
 let g:elm_format_autosave = 0
 let g:elm_syntastic_show_warnings = 1
-let g:ycm_semantic_triggers = {
-    \ 'elm' : ['.'],
-    \}
+" let g:ycm_semantic_triggers = {
+"     \ 'elm' : ['.'],
+"     \}
 au FileType elm map K :ElmShowDocs<cr>
 " }}}
 "
@@ -499,6 +499,11 @@ nnoremap <Insert> <Plug>InterestingWords
 nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
 vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
 nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+"}}}
+
+" completor {{{
+let g:completor_python_binary = '/usr/local/bin/python3'
+let g:completor_gocode_binary = '/Users/ardi/golang/bin/gocode'
 "}}}
 
 set pastetoggle=<f9>
@@ -533,5 +538,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
 let g:interestingWordsRandomiseColors = 1
+set grepprg=rg\ --vimgrep
 
 " vim:foldmethod=marker

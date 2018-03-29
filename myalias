@@ -174,4 +174,5 @@ alias vi="/usr/local/bin/vim"
 alias t='todo.sh'
 
 export PATH=$PATH:/nix/store/h6fyfrhphdws4fdmdgpkrlxy4b66kmdv-nodejs-6.1.0/bin
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 # vim:ft=sh
