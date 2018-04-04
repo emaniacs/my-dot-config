@@ -46,6 +46,7 @@ Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go' , {'for': 'go'}
 Plug 'elixir-lang/vim-elixir'
 Plug 'Badacadabra/vim-archery'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 " }}}
@@ -539,5 +540,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 let g:interestingWordsRandomiseColors = 1
 set grepprg=rg\ --vimgrep
+
+let g:ale_linters = {'rust': ['rustc']}
 
 " vim:foldmethod=marker
