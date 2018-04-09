@@ -541,7 +541,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:interestingWordsRandomiseColors = 1
 set grepprg=rg\ --vimgrep
 
-let g:ale_linters = {'rust': ['rustc']}
-let g:ale_virtualenv_dir_names = ['.env', 'env', 've-py3', 've', 'virtualenv', '.virtualenv']
+" let g:ale_linters = {'rust': ['rustc']}
+let g:ale_virtualenv_dir_names = ['.virtualenv', 'virtualenv']
 
 " vim:foldmethod=marker
