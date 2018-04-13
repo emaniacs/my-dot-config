@@ -541,7 +541,24 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:interestingWordsRandomiseColors = 1
 set grepprg=rg\ --vimgrep
 
-" let g:ale_linters = {'rust': ['rustc']}
+let g:ale_fixers = {
+            \ 'python': ['autopep8'],
+            \ 'go': ['gofmt'],
+            \ 'javascript': ['prettier'],
+            \ 'elm': ['elm-format'],
+            \ 'json': ['prettier'],
+            \}
+let g:ale_linters = {
+            \ 'python': ['pylint'],
+            \ 'go': ['gofmt'],
+            \ 'javascript': ['eslint'],
+            \ 'elm': ['elm-make'],
+            \ 'erlang': ['erlc'],
+            \ 'rust': ['rustc'],
+            \}
+let g:ale_fix_on_save = 1
 let g:ale_virtualenv_dir_names = ['.virtualenv', 'virtualenv']
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 1
 
 " vim:foldmethod=marker
