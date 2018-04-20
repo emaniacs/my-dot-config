@@ -543,14 +543,14 @@ set grepprg=rg\ --vimgrep
 
 let g:ale_fixers = {
             \ 'python': ['autopep8'],
-            \ 'go': ['gofmt'],
             \ 'javascript': ['prettier'],
+            \ 'go': ['gofmt'],
             \ 'elm': ['elm-format'],
             \ 'json': ['prettier'],
             \}
 let g:ale_linters = {
             \ 'python': ['pylint'],
-            \ 'go': ['gofmt'],
+            \ 'go': ['gofmt', 'golint', 'go build'],
             \ 'javascript': ['eslint'],
             \ 'elm': ['elm-make'],
             \ 'erlang': ['erlc'],
@@ -558,7 +558,6 @@ let g:ale_linters = {
             \}
 let g:ale_fix_on_save = 1
 let g:ale_virtualenv_dir_names = ['.virtualenv', 'virtualenv']
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'normal'
 
 " vim:foldmethod=marker
