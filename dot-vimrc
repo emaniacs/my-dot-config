@@ -556,8 +556,7 @@ let g:ale_linters = {
             \ 'erlang': ['erlc'],
             \ 'rust': ['rustc'],
             \}
-let g:ale_fix_on_save = 1
-let g:ale_virtualenv_dir_names = ['.virtualenv', 'virtualenv']
+let g:ale_virtualenv_dir_names = ['.virtualenv', '.virtualenvosx', 'virtualenv']
 let g:ale_lint_on_text_changed = 'normal'
 
 " vim:foldmethod=marker
