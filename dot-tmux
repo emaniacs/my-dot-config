@@ -13,7 +13,13 @@ set-option -g set-titles on
 set -g status-keys vi
 set -g history-limit 10000
 
+## tmux 2.1+
 # set -g mouse on
+
+## Old version
+# set -g mouse-mode on
+# set -g mouse-select-pane on
+# set -g mouse-select-window on
 
 setw -g mode-keys vi
 setw -g monitor-activity on
