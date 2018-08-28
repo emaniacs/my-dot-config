@@ -25,6 +25,7 @@ Plug 'kurkale6ka/vim-pairs'
 Plug 'rhysd/clever-f.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+" Plug 'ipod825/vim-netranger'
 Plug 'w0rp/ale'
 Plug 'svermeulen/vim-easyclip'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
@@ -505,6 +506,8 @@ nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
 " completor {{{
 let g:completor_python_binary = '/usr/local/bin/python3'
 let g:completor_gocode_binary = '/Users/ardi/golang/bin/gocode'
+nnoremap <silent> <leader>gh :call completor#do('doc')<cr>
+nnoremap <silent> <leader>gf :call completor#do('definition')<cr>
 "}}}
 
 set pastetoggle=<f9>
