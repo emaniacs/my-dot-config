@@ -177,7 +177,7 @@ endif
 syntax on
 
 " set guifont=Ubuntu\ Mono\ 11
-set guifont=Fira\ Mono\ 10
+set guifont=Monoid
 set encoding=utf8
 set ffs=unix,dos,mac
 
