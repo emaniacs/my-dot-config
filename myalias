@@ -186,6 +186,7 @@ alias vi="/usr/local/bin/vim"
 
 alias t='todo.sh'
 alias VAGRANT_KEY=$HOME/.vagrant/machines/default/virtualbox/private_key
+alias ytd='python3 /usr/local/bin/youtube-dl -f mp4'
 
 export PATH=$PATH:/nix/store/h6fyfrhphdws4fdmdgpkrlxy4b66kmdv-nodejs-6.1.0/bin
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
