@@ -8,8 +8,6 @@ Plug 'emaniacs/lightline.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'trevordmiller/nova-vim'
 Plug 'lfv89/vim-interestingwords'
-Plug 'nightsense/strawberry'
-Plug 'vim-scripts/mayansmoke'
 
 "" tools
 " Plug 'Valloric/YouCompleteMe'
