@@ -450,6 +450,7 @@ map <leader>ee :ElmErrorDetail<cr>
 map <leader>es :ElmShowDocs<cr>
 map <leader>eb :ElmBrowseDocs<cr>
 map <leader>ef :ElmFormat<cr>
+map <leader><cr> :o<esc>
 
 " tab control
 nmap <leader>. :tabnext<cr>
@@ -470,6 +471,10 @@ noremap <leader>jt :Tags
 noremap <leader>jw :Windows<cr>
 noremap <leader>jl :History<cr>
 noremap <leader>jh :History<cr>
+" add new line
+" use gm for mark because m used by easyclip
+map <leader><up> gm`O<esc>``
+map <leader><down> gm`o<esc>``
 " map <leader>cc :CtrlPMixed<cr>
 " map <leader>cb :CtrlPBuffer<cr>
 " map <leader>ct :CtrlPTag<cr>
