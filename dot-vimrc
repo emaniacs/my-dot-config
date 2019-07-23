@@ -43,7 +43,9 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " language
 Plug 'elmcast/elm-vim'
 Plug 'fatih/vim-go' , {'for': 'go'}
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
+" Plug 'slashmili/alchemist.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'Badacadabra/vim-archery'
 Plug 'rust-lang/rust.vim'
 
