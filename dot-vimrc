@@ -577,4 +577,7 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:nv_search_paths = ['~/Notes', '~/.notes', '~/.todo/']
 map <leader>S :NV<cr>
 
+" change cursorline theme
+highlight CursorWord0 term=underline cterm=none ctermfg=red gui=underline
+
 " vim:foldmethod=marker
