@@ -12,6 +12,7 @@ Plug 'lfv89/vim-interestingwords'
 "" tools
 " Plug 'Valloric/YouCompleteMe'
 Plug 'maralla/completor.vim'
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'emaniacs/open_file_under_cursor.vim'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
@@ -39,6 +40,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'diepm/vim-rest-console'
 Plug 'valloric/MatchTagAlways'
 Plug 'Vimjas/vim-python-pep8-indent'
+"Plug 'rizzatti/dash.vim'
+Plug 'https://github.com/alok/notational-fzf-vim'
 
 " language
 Plug 'elmcast/elm-vim'
@@ -117,6 +120,8 @@ set showmatch
 
 " show completion with tab on command mode
 set wildmenu
+
+" set spell spelllang=en_us
 
 
 " Use hard tabs for make files
@@ -567,5 +572,9 @@ let g:ale_linters = {
             \}
 let g:ale_virtualenv_dir_names = ['.virtualenv', '.virtualenvosx', 'virtualenv']
 let g:ale_lint_on_text_changed = 'normal'
+
+" need by alok/notational-fzf-vim'
+let g:nv_search_paths = ['~/Notes', '~/.notes', '~/.todo/']
+map <leader>S :NV<cr>
 
 " vim:foldmethod=marker
