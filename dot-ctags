@@ -1,11 +1,26 @@
 --recurse=yes
 --tag-relative=yes
 --exclude=.git
---exclude=.virtualenv
 --exclude=logs
---exclude=*.min.js
+--exclude=storage/*
+--exclude=public/*
+--exclude=node_modules/*
+--exclude=static/*
+--exclude=resources/*
+--exclude=apidoc/*
+--exclude=vendor/*
+--exclude=*.min.*
+--exclude=.nodeenv/*
 
-## Elm
+--langmap=php:+.inc
+--php-kinds=cfd
+--regex-PHP=/abstract\s+class\s+([^ ]+)/\1/c/
+--regex-PHP=/interface\s+([^ ]+)/\1/c/
+--regex-PHP=/(public\s+|static\s+|protected\s+|private\s+)\$([^     =]+)/\2/p/
+--regex-PHP=/const\s+([^    =]+)/\1/d/
+--regex-PHP=/final\s+(public\s+|static\s+|abstract\s+|protected\s+|private\s+)function\s+\&?\s*([^ (]+)/\2/f/
+--regex-php=/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i
+
 --langdef=Elm
 --langmap=Elm:.elm
 --regex-Elm=/^ *([[:lower:]][[:alnum:]_]+)[[:blank:]]*:[^:].*->.*/\1/f,function,functions/
@@ -15,8 +30,6 @@
 --regex-Elm=/^type[[:blank:]]+alias[[:blank:]]+([[:upper:]][[:alnum:]_]+)/\1/a,type-alias,type-aliases/
 
 
-
-# Elixir
 --langdef=Elixir
 --langmap=Elixir:.ex.exs
 --regex-Elixir=/^[ \t]*def(p?)[ \t]+([a-z_][a-zA-Z0-9_?!]*)/\2/f,functions,functions (def ...)/

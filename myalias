@@ -190,4 +190,18 @@ alias ytd='python3 /usr/local/bin/youtube-dl -f mp4'
 
 export PATH=$PATH:/nix/store/h6fyfrhphdws4fdmdgpkrlxy4b66kmdv-nodejs-6.1.0/bin
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+alias tcurl="curl -w '@$HOME/curl-format.txt'"
+alias acurl="curl -u 'salmon:(W!2wj*ap[g\"NDLhcQ?UH3'"
+alias dssh="ssh -l tirto -p 65022"
+alias tssh="ssh -l tirto"
+alias pgasoka="ssh -p65022 -L localhost:5432:asoka-do:5432 tirto@rafflesia"
+alias esbg="ssh -p65022 -L 9200:localhost:9200 tirto@anyelir-background"
+
+
+# view git issue
+GH=$(which gh)
+alias v=$(which nvim)
+alias f='vi -U ~/.vimrc-noplugin'
+
 # vim:ft=sh

@@ -1,13 +1,14 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-    name = N.Ardi
+    name = Ardi
     email = noone.nu1@gmail.com
 [core]
     filemode = false
     editor = vim
     excludesfile = ~/.gitignore
     pager = less -R
+    commentchar = ";"
 [help]
     autocorrect = 15
 [color]
@@ -61,3 +62,8 @@
     selected = normal
     separator = red bold
     linenumber = normal
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

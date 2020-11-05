@@ -3,343 +3,54 @@
 " vim-plug {{{
 call plug#begin('~/.vim/bundle')
 
-" gui
-Plug 'emaniacs/lightline.vim'
-Plug 'itchyny/vim-cursorword'
-Plug 'trevordmiller/nova-vim'
+" Plug 'tpope/vim-sensible'
 Plug 'lfv89/vim-interestingwords'
-
-"" tools
-" Plug 'Valloric/YouCompleteMe'
-Plug 'maralla/completor.vim'
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'emaniacs/open_file_under_cursor.vim'
-Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/vim-easy-align'
-Plug 'kurkale6ka/vim-pairs'
-Plug 'rhysd/clever-f.vim'
-Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-" Plug 'ipod825/vim-netranger'
-Plug 'w0rp/ale'
-Plug 'svermeulen/vim-easyclip'
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-"" this plugin replace c-i
-" Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
-Plug 'terryma/vim-expand-region'
-Plug 'diepm/vim-rest-console'
-Plug 'valloric/MatchTagAlways'
-Plug 'Vimjas/vim-python-pep8-indent'
-"Plug 'rizzatti/dash.vim'
-Plug 'https://github.com/alok/notational-fzf-vim'
-
-" language
-Plug 'elmcast/elm-vim'
-Plug 'fatih/vim-go' , {'for': 'go'}
-Plug 'elixir-editors/vim-elixir'
-" Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-abolish'
+" Plug 'ludovicchabant/vim-gutentags'
+" Plug 'skywind3000/gutentags_plus'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/vim-cursorword'
+Plug 'rhysd/clever-f.vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+Plug 'vim-vdebug/vdebug'
 Plug 'airblade/vim-gitgutter'
-Plug 'Badacadabra/vim-archery'
-Plug 'rust-lang/rust.vim'
+
+Plug 'preservim/tagbar'
+
+" Plug 'sheerun/vim-polyglot'
+" Plug 'lambdatoast/elm.vim'
+Plug 'ElmCast/elm-vim'
+Plug 'dense-analysis/ale'
+Plug 'junegunn/vim-easy-align'
+" Plug 'ervandew/supertab'
+" Plug 'StanAngeloff/php.vim'
+Plug 'https://github.com/alok/notational-fzf-vim'
+" Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'diepm/vim-rest-console'
+Plug 'trevordmiller/nova-vim'
+
+" Plug 'itchyny/lightline.vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'rizzatti/dash.vim'
+" Plug 'skywind3000/vim-preview'
 
 call plug#end()
 " }}}
-
-" Tab indentions {{{
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-" }}}
-
-" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
-" let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
-let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
-" let g:minisnip_trigger = '<C-e>'
-
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Misc SET{{{
-
-set nocompatible
-filetype off
-set matchpairs+=<:>
-set relativenumber
-
-set tags+=.tags
-
-" Auto change dir
-set noautochdir
-
-set history=700
-
-set hidden
-
-" Enable line numbers
-set number
-
-" Auto indention
-set autoindent
-set cindent
-
-" Search
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" Format multi-line comments, Fold
-set comments=sr:/*,mb:*,ex:*/
-set formatoptions+=r
-set foldmethod=marker
-set foldmarker={,}
-" set foldlevelstart=10
-" fix error on backspace
-set backspace=eol,indent,start
-set list
-set listchars=tab:»·,trail:·,extends:>
-
-" show match tag
-set showmatch
-
-" show completion with tab on command mode
-set wildmenu
-
-" set spell spelllang=en_us
-
-
-" Use hard tabs for make files
-autocmd FileType make setlocal noexpandtab
-
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
-" Remember info about open buffers on close
-set viminfo^=%
-
-command W w !sudo tee % > /dev/null
-
-au BufRead,BufNewFile *.php set ft=php.html
-au BufRead,BufNewFile *.tpl set ft=php.html
-au BufRead,BufNewFile *.tag set ft=html
-au BufRead,BufNewFile *.pug set ft=jade
-au BufRead,BufNewFile *.jade set ft=jade
-
-au BufRead,BufNewFile *.md set ft=markdown
-au BufRead,BufNewFile *.md setlocal textwidth=80
-
-au BufRead,BufNewFile *.jade,*.js,*.jsx setl tabstop=2
-au BufRead,BufNewFile *.jade,*.js,*.jsx setl shiftwidth=2
-au BufRead,BufNewFile *.jade,*.js,*.jsx setl softtabstop=2
-au BufRead,BufNewFile *.jade,*.js,*.jsx setl expandtab
-
-au BufNewFile,BufRead todo.txt,*.task,*.tasks setfiletype task
-au BufRead,BufNewFile todo.txt,*.task,*.tasks setl tabstop=2
-au BufRead,BufNewFile todo.txt,*.task,*.tasks setl shiftwidth=2
-au BufRead,BufNewFile todo.txt,*.task,*.tasks setl softtabstop=2
-au BufRead,BufNewFile todo.txt,*.task,*.tasks setl expandtab
-
-
-" backup and swap file
-set backupdir=~/.vim/tmp/backup,.
-set directory=~/.vim/tmp/backup,.
-set noswapfile
-
-au FileType python,jade,html,lua,vim,elm setl foldmethod=indent
-
-" }}}
-
-
-" tmux
-if &term =~ '^screen'
-    " tmux will send xterm-style keys when its xterm-keys option is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-endif
-
-" Gui, color {{{
-" Syntax highlighting
-syntax on
-
-" set guifont=Ubuntu\ Mono\ 11
-set guifont=Monoid
-set encoding=utf8
-set ffs=unix,dos,mac
-
-set lazyredraw
-
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-
-set t_Co=256
-colorscheme nova
-
-" set cursorline
-" hi CursorLine guibg=Grey40
-set laststatus=2
-" }}}
-
-" Session {{{
-let g:session_autosave = 'yes'
-let g:session_autoload = 'no'
-" }}}
-
-" YankRing {{{
-if has("win16") || has("win32")
-    " Don't do anything
-else
-    let g:yankring_history_dir = '~/.vim/tmp/yank'
-endif
-" }}}
-
-" vim-multiple-cursors {{{
-let g:multi_cursor_next_key='<C-i>'
-" }}}
-
-" Goyo {{{
-let g:goyo_width=70
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
-" }}}
-
-" Functions {{{
-function! GetCWD()
-    let dir = getcwd()
-    if len(dir) > 47 || winwidth(0) < 100
-        let spdir = split(dir, '/')
-        let target= []
-        for name in spdir[0:-2]
-            call add(target, name[0])
-        endfor
-        return '/'. join(target, '/') . '/' . spdir[-1]
-    endif
-
-    return dir
-endfunction
-
-function! MyModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-    return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! MyFilename()
-    let fname = expand('%:t')
-    return fname != '' ? fname : '[No Name]'
-endfunction
-
-function! MyGitBranch()
-    try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let _ = fugitive#head()
-            return strlen(_) ? _ : ''
-        endif
-    catch
-    endtry
-    return ''
-endfunction
-
-function! MyMode()
-    let fname = expand('%:t')
-    return fname == 'ControlP' ? 'CtrlP' :
-                \ fname == '__cwd__' ? 'getcwd' :
-                \ fname =~ 'NERD_tree' ? 'NERDTree' :
-                \ lightline#mode() == 'NORMAL' ? 'N' :
-                \ lightline#mode() == 'INSERT' ? 'I' :
-                \ lightline#mode() == 'VISUAL' ? 'V' :
-                \ lightline#mode() == 'V-LINE' ? 'V' :
-                \ lightline#mode() == 'V-BLOCK' ? 'V' :
-                \ lightline#mode() == 'REPLACE' ? 'R' :
-                \ lightline#mode()
-endfunction
-
-" }}}
-
-" lightline {{{
-let g:lightline = {
-            \ 'colorscheme': 'archery',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'gitb'], ['ro', 'mdf'], ['workingdir','filename' ]],
-            \   'right': [ 
-            \            [ 'lineinfo', 'percent' ],
-            \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'inactive': {
-            \   'right': [ ['mdf'], ['percent']]
-            \ },
-            \ 'component_function': {
-            \   'gitb': 'MyGitBranch',
-            \   'filename': 'MyFilename',
-            \   'workingdir': 'GetCWD',
-            \   'mode': 'MyMode',
-            \   'ro': 'MyReadonly',
-            \   'mdf': 'MyModified',
-            \ },
-            \ 'component_expand': {
-            \   'linter_warnings': 'LightlineLinterWarnings',
-            \   'linter_errors': 'LightlineLinterErrors',
-            \   'linter_ok': 'LightlineLinterOK'
-            \ },
-            \ 'component_type': {
-            \   'readonly': 'error',
-            \   'linter_warnings': 'warning',
-            \   'linter_errors': 'error'
-            \ },
-            \ 'subseparator': { 'left': '|', 'right': '|' }
-            \ }
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
-endfunction
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
-endfunction
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓ ' : ''
-endfunction
-
-" Update and show lightline but only if it's visible (e.g., not in Goyo)
-autocmd User ALELint call s:MaybeUpdateLightline()
-function! s:MaybeUpdateLightline()
-  if exists('#lightline')
-    call lightline#update()
-  end
-endfunction
-" }}}
 "
+
 "Ale {{{
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
@@ -350,210 +61,6 @@ highlight link ALEErrorSign Title
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"}}}
-
-"Ag {{{
-nmap <silent> <leader>a :Ag "<cword>"<cr> 
-"}}}
-
-" clever-f {{{
-let g:clever_f_across_no_line = 0
-" }}}
-
-" Another shortcut {{{
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
-nnoremap j gj
-nnoremap k gk
-
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-
-map <F10> :NERDTreeToggle<CR>
-imap <F10> <ESC>:NERDTreeToggle<CR>
-map <S-F10> :NERDTree %<CR>
-
-imap <S-Up> <ESC>:winc +<cr><esc>i
-map <S-Up> :winc +<cr>
-imap <S-Down> <ESC>:winc -<cr><esc>i
-map <S-Down> :winc -<cr>
-imap <S-Right> <ESC>:winc ><cr><esc>i
-map <S-Right> :winc ><cr>
-imap <S-Left> <ESC>:winc <<cr><esc>i
-map <S-Left> :winc <<cr>
-
-map <T-Left> <C-w><Left>
-map <T-Right> <C-w><Right>
-map <T-Up> <C-w><Up>
-map <T-Down> <C-w><Down>
-map <T-q> <C-w>q
-
-" copy to clipboard
-map <A-x> "+x
-imap <A-x> <ESC>"+xi
-map <A-v> "+gP
-imap <A-v> <ESC>"+gPi
-map <A-c> "+y
-imap <A-c> <ESC>"+yi
-
-nnoremap ; :
-" nnoremap : ;
-nnoremap \ ,
-
-" m used by easyclip
-nnoremap gm m
-
-" search and centering the page
-" from mastering vim
-nnoremap n nzz
-nnoremap N Nzz
-
-"}}}
-
-" Leader shorcut {{{
-let mapleader = "\<Space>"
-let g:mapleader = "\<Space>"
-
-nmap <leader>w :w!<cr>
-map <leader>d :bdelete<cr>
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
-map <leader>m :b#<cr>
-map <leader>l :ls<cr>
-map <leader>q ZZ
-map <leader>, <c-w>w
-map <leader>gn :GitGutterNextHunk<cr>
-map <leader>gp :GitGutterPrevHunk<cr>
-map <leader>gd :Git diff %<cr>
-map <leader>gs :Git status<cr>
-map <leader>gc :Git commit -m '
-map <leader>gb :Git blame %<cr>
-map <leader>gA :Git add 
-map <leader>ga :Git add %<cr>
-map <leader>gr :Git reset HEAD %<cr>
-map <leader>go :Git checkout %
-map <leader>gl :Git log --pretty=format:"\%h\%x09\%an\%x09\%ad\%x09\%s" -20 <cr>
-map <leader>gL :Git log --pretty=format:"\%h\%x09\%an\%x09\%ad\%x09\%s"
-map <leader>gS :Gstatus<cr>
-
-map <leader>ek :ElmMake %
-map <leader>em :ElmMakeMain<cr>
-map <leader>et :ElmTest %
-map <leader>er :ElmRepl<cr>
-map <leader>ee :ElmErrorDetail<cr>
-map <leader>es :ElmShowDocs<cr>
-map <leader>eb :ElmBrowseDocs<cr>
-map <leader>ef :ElmFormat<cr>
-map <leader><cr> :o<esc>
-
-" tab control
-nmap <leader>. :tabnext<cr>
-nmap <leader>/ :tabprevious<cr>
-
-nmap <silent> <leader><cr> :set hlsearch!<cr>
-nmap <leader>cd :lcd %:h<cr>
-nmap <leader>cg :lcd <c-r>=system('git rev-parse --show-toplevel')<cr><cr>
-nmap <leader>cc :!mkdir -p %:p:h<cr>
-
-" http://www.reddit.com/r/vim/comments/2p6jqr/quick_replace_useful_refactoring_and_editing_tool/cmttvv2
-nnoremap <leader>r :.,$s/\<<C-r>=expand('<cword>')<CR>\>//gc<Left><Left><Left>
-nnoremap <leader>F :echo expand('%:p')<cr>
-
-noremap <leader>jj :FZF<cr>
-noremap <leader>jk :Buffers<cr>
-noremap <leader>jt :Tags 
-noremap <leader>jw :Windows<cr>
-noremap <leader>jl :History<cr>
-noremap <leader>jh :History<cr>
-" add new line
-" use gm for mark because m used by easyclip
-map <leader><up> gm`O<esc>``
-map <leader><down> gm`o<esc>``
-" map <leader>cc :CtrlPMixed<cr>
-" map <leader>cb :CtrlPBuffer<cr>
-" map <leader>ct :CtrlPTag<cr>
-
-
-" }}}
-
-" vim-go {{{
-let g:go_fmt_autosave = 0
-" }}}
-"
-" elm {{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-
-let g:elm_format_autosave = 0
-let g:elm_syntastic_show_warnings = 1
-" let g:ycm_semantic_triggers = {
-"     \ 'elm' : ['.'],
-"     \}
-au FileType elm map K :ElmShowDocs<cr>
-" }}}
-"
-" Interestingword {{{
-" disabled default mapping
-" Because i just need to show interesting word
-let g:interestingWordsDefaultMappings = 1
-nnoremap <Insert> <Plug>InterestingWords
-nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
-vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
-nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
-"}}}
-
-" completor {{{
-let g:completor_python_binary = '/usr/local/bin/python3'
-let g:completor_gocode_binary = '/Users/ardi/golang/bin/gocode'
-nnoremap <silent> <leader>gh :call completor#do('doc')<cr>
-nnoremap <silent> <leader>gf :call completor#do('definition')<cr>
-"}}}
-
-set pastetoggle=<f9>
-
-nmap <f9> :setl paste! paste?<cr>
-
-" force backup
-set backup
-set writebackup
-
-let g:go_autodetect_gopath = 0
-
-let g:jsx_ext_required = 1
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'jade' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \}
-
-" {{{ Easy align
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-" }}}
-"
-" {{{ vim-expand-region
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-" }}}
-
-let g:interestingWordsRandomiseColors = 1
-set grepprg=rg\ --vimgrep
 
 let g:ale_fixers = {
             \ 'python': ['autopep8'],
@@ -571,13 +78,217 @@ let g:ale_linters = {
             \ 'rust': ['rustc'],
             \}
 let g:ale_virtualenv_dir_names = ['.virtualenv', '.virtualenvosx', 'virtualenv']
-let g:ale_lint_on_text_changed = 'normal'
-
-" need by alok/notational-fzf-vim'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+" jump to error
+nmap [e <Plug>(ale_previous_wrap)
+nmap ]e <Plug>(ale_next_wrap)
+"}}}
+"
+"
 let g:nv_search_paths = ['~/Notes', '~/.notes', '~/.todo/']
-map <leader>S :NV<cr>
 
-" change cursorline theme
-highlight CursorWord0 term=underline cterm=none ctermfg=red gui=underline
+
+
+" Format multi-line comments, Fold
+set comments=sr:/*,mb:*,ex:*/
+set formatoptions+=r
+set foldmethod=marker
+set foldmarker={,}
+" set foldlevelstart=10
+" fix error on backspace
+set backspace=eol,indent,start
+set list
+set listchars=tab:»·,trail:·,extends:>
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+" show match tag
+set showmatch
+set hidden
+
+set ignorecase
+set smartcase
+set incsearch
+
+set relativenumber
+
+" sometimes syntax highlight didnt work
+set redrawtime=10000
+
+" no swap file
+set noswapfile
+
+
+colorscheme nova
+
+" {{{ Function
+
+function! JumpToLists()
+    jumps
+    let j = input("Select list number: ")
+    if j != ''
+        let pattern = '\v\c^\+'
+        if j =~ pattern
+            let j = substitute(j, pattern, '', 'g')
+            execute "normal " . j . "\<c-i>"
+        else
+            execute "normal " . j . "\<c-o>"
+        endif
+     endif
+endfunction
+
+function! JumpToChanges()
+    changes
+    let j = input("Select changes number: ")
+    if j != ''
+        let pattern = '\v\c^\+'
+        if j =~ pattern
+            let j = substitute(j, pattern, '', 'g')
+            execute "normal " . j . "\<c-i>"
+        else
+            execute "normal " . j . "\<c-o>"
+        endif
+     endif
+endfunction
+" }}}
+
+
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
+
+nmap <silent> <leader>A :Ag "<cword>"<cr>
+nmap <silent> <leader>a :Ag "<cword>"<cr>
+
+nmap <leader>w :w!<cr>
+map <leader>d :bdelete<cr>
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>m :b#<cr>
+map <leader>l :ls<cr>
+map <leader>q ZZ
+map <leader>, <c-w>w
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>gs :Git status<cr>
+map <leader>gc :Git commit -m '
+map <leader>G :Git<cr>
+
+" change directory into current directory file
+nmap <leader>C :lcd "%:p:h"<cr>
+
+
+" open file tree at current directory
+" this shorcut take from youtube
+" https://www.youtube.com/watch?v=E-ZbrtoSuzw
+map <leader>W :30vs .<cr>
+
+" window size management
+map <C-S-Left> :winc <<cr>
+map <C-S-Right> :winc ><cr>
+map <C-S-Up> :winc +<cr>
+map <C-S-Down> :winc -<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" disable auto generate tags, this handle by gutentags
+let g:fzf_generate_tags = 0
+" Empty value to disable preview window altogether
+let g:fzf_preview_window = ''
+
+" Always enable preview window on the right with 60% width
+let g:fzf_preview_window = 'right:60%'
+
+noremap <leader>jf :Files<cr>
+noremap <leader>jb :Buffers<cr>
+noremap <leader>jh :History<cr>
+
+
+
+noremap <leader>gl :call JumpToLists()<cr>
+noremap <leader>gc :call JumpToChanges()<cr>
+
+noremap <leader>] <C-]>
+nnoremap ; :
+
+nmap <leader>. :tabnext<cr>
+nmap <leader>/ :tabprevious<cr>
+
+"" Gitgutter
+let g:gitgutter_enabled = 0
+noremap <leader>gg :GitGutterToggle<cr>
+
+" gutentags --------------------------
+" enable gtags module
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
+
+" config project root markers.
+let g:gutentags_project_root = ['.root', '.git', '.svn', '.hg', '.project']
+
+" generate datebases in my cache directory, prevent gtags files polluting my project
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
+
+" {{{ Ultisnip
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+" }}}
+
+function! PHPDocs(query)
+    let dir = '/Users/ardi/Documents/git/vim-php-manual/manual/doc'
+    let query = substitute(a:query, "_", " ", "g")
+    call fzf#vim#files(dir, fzf#vim#with_preview({'options': ['--query='. query ]}))
+endfunction
+nmap <leader>P :call PHPDocs(expand("<cword>"))<cr>
+
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+function CurrentGitStatus()
+    let gitoutput = split(system('git status --porcelain -b '.shellescape(expand('%')).' 2>/dev/null'),'\n')
+    if len(gitoutput) > 0
+        let b:gitstatus = strpart(get(gitoutput,0,''),3) . '/' . strpart(get(gitoutput,1,'  '),0,2)
+    else
+        let b:gitstatus = ''
+    endif
+endfunc
+
+aut BufNewFile,BufRead *.elm setlocal foldmethod=indent
+aut BufNewFile,BufRead *.py setlocal foldmethod=indent
+
+set laststatus=2
+set statusline=%f\ %h%m%r " file + modified flag
+set statusline+=[%{fugitive#head()}] " git branch
+set statusline+=%=[%{strlen(&fenc)?&fenc:&enc}\ %l:%v-%L] " encoding line:column-total
+let g:netrw_keepdir=0
+
+
+let g:ale_php_phpstan_level = 0
+" let g:airline#extensions#tagbar#flags = 'f'
+" let g:lightline = {
+"             \ 'colorscheme': 'wombat',
+"             \ 'active': {
+"             \   'left': [ [ 'mode', 'paste' ],
+"             \             [ 'fugitive', 'filename' ],
+"             \             ['ctrlpmark', 'tagbar']
+"             \           ]
+"             \ },
+"             \ 'component': {
+"             \   'tagbar':'%{tagbar#currenttag("[%s]", "", "f")}',
+"             \ },
+"             \ }
+" \   'tagbar': '%{tagbar#currenttag("[%s]", "", "f")}',
 
 " vim:foldmethod=marker
+"
